@@ -1,3 +1,9 @@
+<?php 
+session_start(); //Start de sessions 
+if ($_SESSION["inlog"] = "1"){ // is al ingelogt door sturen naar hooft pagina 
+	header("Location:index.php?currenpage=index");//  doorstuuren naar pagina 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
