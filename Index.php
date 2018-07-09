@@ -2,6 +2,8 @@
 session_start(); //Start de sessions 
 if ($_SESSION["inlog"] = "1"){ // is al ingelogt door sturen naar hooft pagina 
 	header("Location:index.php?currenpage=index");//  doorstuuren naar pagina 
+}else{
+	$_SESSION["inlog"] = 0; // standaart session waarde mee geven
 }
 ?>
 <!DOCTYPE html>
