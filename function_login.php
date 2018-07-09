@@ -1,12 +1,13 @@
 <?php 
-function inlog($student_ID, $student_wachtwoord)
+function Inlog($student_ID, $student_wachtwoord)
 {
+    $count = 0;
     // To protect MySQLi injection (more detail about MySQL injection)
     $student_ID = stripslashes($student_ID);
     $student_wachtwoord = stripslashes($student_wachtwoord);
 
-    $student_ID = mysqli_reali_escape_string($student_ID);
-    $student_wachtwoord = mysqlii_real_escape_string($student_wachtwoord);
+    $student_ID = mysqli_real_escape_string($db->connect(), $student_ID);
+    $student_wachtwoord = mysqli_real_escape_string($db->connect(), $student_wachtwoord);
 
     if ($count == 0) {
         $sql = ("SELECT * FROM `users` WHERE userID= '" . $student_ID . "' And userPass = '" . $student_wachtwoord . "';");
@@ -25,14 +26,14 @@ function inlog($student_ID, $student_wachtwoord)
             }
         }
         if ($count == 0) {
-            echo "Wrong userID or Password";
+            return "Wrong userID or Password";
             header("Location:index.php?login=mislukt");
         }
     }
     $db->close();// database sluiten
 }
 
-function logout()
+function Logout()
 {
     session_start();
     session_destroy();
