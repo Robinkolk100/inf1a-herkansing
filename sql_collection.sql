@@ -25,3 +25,6 @@ SELECT * FROM `documents` JOIN `projectdocuments` ON `documents`.`documentID` = 
 --sql to check for excisting user properties
 SELECT `userName`, `userEmail` FROM `users` WHERE `userID` = '' OR `userEmail` = '';
 
+--get all advice of selected document
+SELECT * FROM `advice` WHERE `documentID` = '';
+
