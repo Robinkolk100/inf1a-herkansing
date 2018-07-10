@@ -62,5 +62,4 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
         return $message;
     }
 }
-return;
 ?>
