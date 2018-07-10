@@ -1,11 +1,11 @@
 <?php
-function newdocument(){
+function NewDocument(){
 
 }
-function editdocument(){
+function EditDocument(){
 
 }
-function deletedocument(){
+function DeleteDocument(){
     
 }
 ?>
