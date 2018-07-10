@@ -12,7 +12,7 @@ function Inlog($student_ID, $student_wachtwoord)
 
     if ($count == 0) 
     {
-        $sql = ("SELECT * FROM `users` WHERE userID= '" . $student_ID . "' And userPass = '" . $student_wachtwoord . "';");
+        $sql = ("SELECT * FROM `users` WHERE `userID` = '" . $student_ID . "' And `userPass` = '" . $student_wachtwoord . "';");
         $result = mysqli_query($sql);
          
          // Mysqli_num_row is counting table row

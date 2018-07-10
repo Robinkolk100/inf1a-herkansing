@@ -23,7 +23,7 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
         // kijken als deze persoon al eerder heeft opgegeven
         if ($count == 0) 
         {
-            $sql = ("SELECT * FROM `users` WHERE `userID_ID` = '" . $student_ID . "';");
+            $sql = ("SELECT `userName`, `userEmail` FROM `users` WHERE `userID` = {$student_ID} OR `userEmail` = {$student_userEmail};");
             $result = mysqli_query($sql);
          
             // Mysql_num_row is counting table row

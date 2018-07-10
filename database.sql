@@ -35,13 +35,6 @@ CREATE TABLE `advice` (
   `adviceTekst` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `advice`
---
-
-INSERT INTO `advice` (`adviceID`, `documentID`, `adviceType`, `adviceTekst`) VALUES
-(2, 1, 'Verplichting', 'dit is een voorbeeld');
-
 -- --------------------------------------------------------
 
 --
@@ -52,13 +45,6 @@ CREATE TABLE `documents` (
   `documentID` int(11) NOT NULL,
   `documentName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `documents`
---
-
-INSERT INTO `documents` (`documentID`, `documentName`) VALUES
-(1, 'Plan van Aanpak');
 
 -- --------------------------------------------------------
 
@@ -75,13 +61,6 @@ CREATE TABLE `projectdocuments` (
   `documentUpload` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `projectdocuments`
---
-
-INSERT INTO `projectdocuments` (`projectDocumentID`, `projectID`, `documentID`, `documentDeadline`, `documentLink`, `documentUpload`) VALUES
-(2, 1, 1, '2018-07-20', 'voobeeld link', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -96,13 +75,6 @@ CREATE TABLE `projects` (
   `ProjectName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `projects`
---
-
-INSERT INTO `projects` (`projectID`, `projectGroup`, `projectPeriode`, `projectYear`, `ProjectName`) VALUES
-(1, 'A', 5, 1, 'Herkansing');
-
 -- --------------------------------------------------------
 
 --
@@ -114,13 +86,6 @@ CREATE TABLE `userproject` (
   `projectID` int(11) NOT NULL,
   `WarningCount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `userproject`
---
-
-INSERT INTO `userproject` (`userID`, `projectID`, `WarningCount`) VALUES
-(587842, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -134,17 +99,6 @@ CREATE TABLE `users` (
   `userEmail` varchar(100) NOT NULL,
   `userPass` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`userID`, `userName`, `userEmail`, `userPass`) VALUES
-(587842, 'Martin Westerhof', 'martin.westerhof@student.stenden.com', 'poep1234');
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `advice`
