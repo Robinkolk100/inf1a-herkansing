@@ -1,4 +1,8 @@
 <?php
+$test = dbConnect();
+
+dbclose($test);
+
 function dbConnect()
 {
 	$dbHost = "localhost";
@@ -12,17 +16,22 @@ function dbConnect()
 	}
 	else
 	{
-		if(!(mysqli_select_db($dbName, $conn))){
+		if(!(mysqli_select_db($conn, $dbName)))
+		{
 			echo mysqli_error();
 			echo "error on database connection. Check your settings.";
+		} 
+		else 
+		{
+			return $conn;
 		}
 	}
 }
 #-#############################################
 # desc: close the connection
-function dbclose() {
-	if(!@mysqli_close(dbConnect())){
-		$errorclose = mysqli_error(dbConnect());
+function dbclose($conn) {
+	if(!@mysqli_close($conn)){
+		$errorclose = mysqli_error($conn);
 		return $errorclose;
 	}
 }#-#close()
