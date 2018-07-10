@@ -1,5 +1,5 @@
 <?php
-
+	include 'db_connect.php';
 	include 'function_account.php';
 
 ?>
@@ -13,7 +13,7 @@
 	<form>
 		<input type="text" name="userID"><br>
 		<input type="text" name="userEmail"><br>
-		<input type="pass" name="password"><br>
+		<input type="password" name="password"><br>
 		<input type="submit" name="sumbit" value="submit"><br>
 	</form>
 
@@ -23,6 +23,15 @@
 <?php
 
 	if(isset($_POST["submit"])) {
-		NewAccountUser($_POST["userID"], $_POST["userEmail"], $_POST["password"]);
+		$userID = $_POST["userID"];
+		$userEmail = $_POST["userEmail"];
+		$password = $_POST["password"];
+
+		$test = NewAccountUser($userIDs, $userEmail, $password);
+		
+		echo $test;
+             echo $test['IdErr'];
+             echo $test['emailErr'];
+
 	}
 ?>

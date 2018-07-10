@@ -1,8 +1,4 @@
 <?php
-$test = dbConnect();
-
-dbclose($test);
-
 function dbConnect()
 {
 	$dbHost = "localhost";
