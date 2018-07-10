@@ -5,7 +5,7 @@ function Inlog($student_ID, $student_wachtwoord)
 
     // To protect MySQLi injection (more detail about MySQL injection)
     $student_ID = stripslashes($student_ID);
-    $student_wachtwoord = stripslashes($student_wachtwoord);
+    $student_wachtwoord = password_hash((stripslashes($student_wachtwoord)), PASSWORD_DEFAULT);
 
     $student_ID = mysqli_real_escape_string($db->connect(), $student_ID);
     $student_wachtwoord = mysqli_real_escape_string($db->connect(), $student_wachtwoord);

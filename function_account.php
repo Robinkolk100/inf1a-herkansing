@@ -36,8 +36,9 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
             $student_userEmail = strstr($student_userEmail, '@', true); // user name
             str_replace('.', ' ', $student_userEmail); // replace dot met black space 
             $student_userPass = mysqli_real_escape_string($db->connect(), $student_userPass);
+            $userPass_encrypt = password_hash("$student_userPass", PASSWORD_DEFAULT);
             @$db->run_query("INSERT INTO `users` (`userID`, `userName`, `userEmail`, `userPass`) VALUES 
-                                    ('" . $student_ID . "', '" . $userName . "', '" . $student_userEmail . "', '" . $student_userPass . "'); ");
+                            ('" . $student_ID . "', '" . $userName . "', '" . $student_userEmail . "', '" . $userPass_encrypt . "'); ");
             header('Location:login.php?status=succes');
         }
         
@@ -46,7 +47,7 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
         { 
             header('Location:login.php?status=fail');
         }
-        
+
     } else {
         return array('IdErr' => $IdErr, 'emailErr' => $emailErr);
         /* 
