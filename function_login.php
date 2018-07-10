@@ -1,4 +1,5 @@
 <?php 
+
 function Inlog($student_ID, $student_wachtwoord)
 {
     $count = 0;

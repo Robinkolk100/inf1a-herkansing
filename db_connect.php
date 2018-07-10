@@ -13,11 +13,10 @@ function dbConnect()
 	}
 	else
 	{
-		if(!(mysqli_select_db($dbName, $conn))){
+		if(!(mysqli_select_db($conn, $dbName))){
 			echo mysqli_error();
 			echo "error on database connection. Check your settings.";
-		}
-	}
+		}	}
 }
 
 ?>
