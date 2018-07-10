@@ -20,4 +20,8 @@ SELECT `userName`, `userEmail` FROM `users` WHERE `userID` = '' AND `userPass` =
 SELECT * FROM `projects` JOIN `userproject` ON `userproject`.`projectID` = `projects`.`projectID` WHERE `userID` = '';
 
 --sql ment to gain all document belonging to project
-SELECT * FROM `documents` JOIN `projectdocuments` ON `documents`.`documentID` = `projectdocuments`.`documentID` WHERE `projectID` = ''
+SELECT * FROM `documents` JOIN `projectdocuments` ON `documents`.`documentID` = `projectdocuments`.`documentID` WHERE `projectID` = '';
+
+--sql to check for excisting user properties
+SELECT `userName`, `userEmail` FROM `users` WHERE `userID` = '' OR `userEmail` = '';
+
