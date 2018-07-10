@@ -23,13 +23,4 @@ function dbConnect()
 		}
 	}
 }
-#-#############################################
-# desc: close the connection
-function dbclose($conn) {
-	if(!@mysqli_close($conn)){
-		$errorclose = mysqli_error($conn);
-		return $errorclose;
-	}
-}#-#close()
-
 ?>

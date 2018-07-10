@@ -1,34 +1,43 @@
 <?php 
 function NewProject($ProjectName, $projectPeriode, $projectGroup)
 {
+    $errcount = 0;
+    $message = array();
+    $conn = dbConnect();
     //check als alles is ingevult
     if ($ProjectName == '' || $projectPeriode == '' || $projectGroup == '') {
-        $err = "ERROR - Please make sure all required fields are filled";
+        array_push($message, "ERROR - Please make sure all required fields are filled<br>");
     }
         // Check if variable is an integer
     if (!ctype_digit(strval($variable))) {
-        $IdErr = "Your variable is not an integer";
+        array_push($message, "Your variable is not an integer<br>");
     }
     // check als periode niet groter is dan 5
     if ($projectPeriode > 5) {
-        $errperiode = "Wil jij langer dan kan naar school dat kan niet knul";
+        array_push($message, "Wil jij langer dan kan naar school dat kan niet knul<br>");
     } else {
+        $errcount = count($message);
         //geen error ga door 
-        if ($err == 0) {
+        if ($errcount == 0) {
             $projectYear = date("Y");// dit jaar
             $ProjectName = htmlentities($ProjectName);
             $projectGroup = htmlentities($projectGroup);
-            $ProjectName = mysqli_real_escape_string(dbConnect(), $ProjectName);
-            $projectGroup = mysqli_real_escape_string(dbConnect(), $projectGroup);
+            $ProjectName = mysqli_real_escape_string($conn, $ProjectName);
+            $projectGroup = mysqli_real_escape_string($conn, $projectGroup);
 
-            @$db->run_query("INSERT INTO `projects` (`projectGroup`, `projectPeriode`, `projectYear`, `ProjectName`) VALUES 
-            ('" . $projectGroup . "', '" . $projectPeriode . "', '" . $projectYear . "', '" . $ProjectName . "'); ");
-            header('Location:login.php?status=succes');
+            $sql = "INSERT INTO `projects` (`projectGroup`, `projectPeriode`, `projectYear`, `ProjectName`) VALUES ('" . $projectGroup . "', '" . $projectPeriode . "', '" . $projectYear . "', '" . $ProjectName . "');";
+
+            if ($conn->query($sql) === true) {
+                echo "New record created successfully<br>";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+            //header('Location:login.php?status=succes');
         } else {
-            return array('errperiode' => $errperiode, 'err' => $err);
+            return $message;
         }
     }
-    dbclose();
+    $conn->close();
 }
 function EditProject()
 {
