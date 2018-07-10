@@ -2,10 +2,21 @@
 
 function dbConnect()
 {
-	$conn = mysqli_connect("localhost", "root", "", "projectdatabase");
-	if(!$conn)
+	$dbHost = "localhost";
+	$dbName = "projectdatabase";
+	$dbUser = "root";
+	$dbPass = "";
+
+	if(!($conn=mysqli_connect($dbHost, $dbUser, $dbPass)))
 	{
-		die("Cant connect to database.");
+		echo "Error on connect.";
+	}
+	else
+	{
+		if(!(mysqli_select_db($dbName, $conn))){
+			echo mysqli_error();
+			echo "error on database connection. Check your settings.";
+		}
 	}
 }
 
