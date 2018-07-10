@@ -18,8 +18,8 @@ function NewProject($ProjectName, $projectPeriode, $projectGroup)
             $projectYear = date("Y");// dit jaar
             $ProjectName = htmlentities($ProjectName);
             $projectGroup = htmlentities($projectGroup);
-            $ProjectName = mysqli_real_escape_string($db->connect(), $ProjectName);
-            $projectGroup = mysqli_real_escape_string($db->connect(), $projectGroup);
+            $ProjectName = mysqli_real_escape_string(dbConnect(), $ProjectName);
+            $projectGroup = mysqli_real_escape_string(dbConnect(), $projectGroup);
 
             @$db->run_query("INSERT INTO `projects` (`projectGroup`, `projectPeriode`, `projectYear`, `ProjectName`) VALUES 
             ('" . $projectGroup . "', '" . $projectPeriode . "', '" . $projectYear . "', '" . $ProjectName . "'); ");
@@ -28,6 +28,7 @@ function NewProject($ProjectName, $projectPeriode, $projectGroup)
             return array('errperiode' => $errperiode, 'err' => $err);
         }
     }
+    dbclose();
 }
 function EditProject()
 {

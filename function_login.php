@@ -8,8 +8,8 @@ function Inlog($student_ID, $student_wachtwoord)
     $student_ID = stripslashes($student_ID);
     $student_wachtwoord = password_hash((stripslashes($student_wachtwoord)), PASSWORD_DEFAULT);
 
-    $student_ID = mysqli_real_escape_string($db->connect(), $student_ID);
-    $student_wachtwoord = mysqli_real_escape_string($db->connect(), $student_wachtwoord);
+    $student_ID = mysqli_real_escape_string(dbConnect(), $student_ID);
+    $student_wachtwoord = mysqli_real_escape_string(dbConnect(), $student_wachtwoord);
 
     if ($count == 0) 
     {
@@ -36,7 +36,7 @@ function Inlog($student_ID, $student_wachtwoord)
             header("Location:index.php?login=mislukt");
         }
     }
-    $db->close();// database sluiten
+    dbclose();// database sluiten
 }
 
 function Logout()
