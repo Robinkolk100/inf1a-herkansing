@@ -21,6 +21,8 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
         }
 
         if ($count == 0) { // persoon in database zetten
+            $student_userEmail = strstr($student_userEmail, '@', true); // user name
+            str_replace('.', ' ', $student_userEmail); // replace dot met black space 
             $student_userPass = mysqli_real_escape_string($db->connect(), $student_userPass);
             @$db->run_query("INSERT INTO `users` (`userID`, `userName`, `userEmail`, `userPass`) VALUES 
                                     ('" . $student_ID . "', '" . $userName . "', '" . $student_userEmail . "', '" . $student_userPass . "'); ");
