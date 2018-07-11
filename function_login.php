@@ -9,6 +9,10 @@ function Inlog($student_ID, $student_wachtwoord)
     $student_ID = mysqli_real_escape_string($conn, $student_ID);
     $student_ID = stripslashes($student_ID);
     $student_wachtwoord = mysqli_real_escape_string($conn, $student_wachtwoord);
+        // Check if variable is an integer
+    if (!ctype_digit(strval($student_ID))) {
+        array_push($message, "Your variable is not an integer<br>");
+    }
     $hash = hash('sha256', $student_wachtwoord);
 
     $result = $conn->query("SELECT * FROM `users` WHERE `userID` = '" . $student_ID . "' And `userPass` = '" . $hash . "';");

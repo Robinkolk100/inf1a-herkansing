@@ -23,7 +23,7 @@ include 'function_login.php';
     </div>
   </nav>
 <div class="container">
-    <form action="#" method="post">
+    <form action="#"  method="post">
     <div class="row">
         <div class="col m6">
             <h2 class="center-align">Inloggen</h2>
@@ -33,16 +33,16 @@ include 'function_login.php';
                             <div class="row"></div>
                         </div>
                     </div>
-                <form class="col s12">
+                <form action="#"  method="post" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="userID" type="text" class="validate" placeholder="studentnummer">
+                            <input id="userID" type="text" name="userID" class="validate" placeholder="studentnummer">
                             
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate" placeholder="Wachtwoord">
+                            <input id="password" type="password" name="password" class="validate" placeholder="Wachtwoord">
                             
                         </div>
                     </div>
@@ -50,6 +50,7 @@ include 'function_login.php';
                         <div class="col m12">
                             <p class="right-align">
                                 <button class="btn btn-large waves-effect waves-light" type="button" name="action">Inloggen</button>
+                                <input type="submit" name="submit" value="submit"><br>
                             </p>
                         </div>
                     </div>
@@ -81,7 +82,6 @@ include 'function_login.php';
                         <div class="col m12">
                             <p class="right-align">
                                 <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Aanmelden</button>
-                           <input type="submit" name="submit" value="submit"><br>
                             </p>
                         </div>
                     </div>
@@ -93,11 +93,6 @@ include 'function_login.php';
 </div>
    <footer class="page-footer orange">
     <div class="container"> 
-    </div>
-    <div class="footer-copyright">
-    </div>
-  </footer>     
-    </body>
     <?php
     
     if (isset($_POST["submit"])) {
@@ -111,4 +106,9 @@ include 'function_login.php';
 }
     
     ?>
+    </div>
+    <div class="footer-copyright">
+    </div>
+  </footer>     
+    </body>
 </html>
