@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include 'db_connect.php';
-include 'function_account.php';
+include 'function_login.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,6 @@ include 'function_account.php';
 <body>
 	<form action="#" method="post">
 		<input type="text" name="userID"><br>
-		<input type="text" name="userEmail"><br>
 		<input type="password" name="password"><br>
 		<input type="submit" name="submit" value="submit"><br>
 	</form>
@@ -19,13 +18,13 @@ include 'function_account.php';
 <?php
 if (isset($_POST["submit"])) {
 	$userID = $_POST["userID"];
-	$userEmail = $_POST["userEmail"];
 	$password = $_POST["password"];
 
-	$test = NewAccountUser($userID, $userEmail, $password);
+	$test = Inlog($userID, $password);
 	foreach ($test as $value) {
 		echo "$value <br>";
 	}
 }
+print_r($_SESSION);
 ?>
 </html>
