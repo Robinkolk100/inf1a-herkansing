@@ -16,9 +16,9 @@ require_once('function_login.php');
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">SmartProject</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="Index.php" class="brand-logo">SmartProject</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Inloggen</a></li>
+        <li><a href="signInSignUp.php">Inloggen</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -35,7 +35,7 @@ require_once('function_login.php');
         <h5 class="header col s12 light">Maakt een einde aan slechtlopende projecten</h5>
       </div>
       <div class="row center">
-        <a href="index.php" id="download-button" class="btn-large waves-effect waves-light orange">Maak een account</a>
+        <a href="signInSignUp.php" id="signInButton" class="btn-large waves-effect waves-light orange">Maak een account</a>
       </div>
       <br><br>
 
