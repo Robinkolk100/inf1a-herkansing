@@ -1,3 +1,7 @@
+<?php
+include 'db_connect.php';
+include 'function_login.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,6 +23,7 @@
     </div>
   </nav>
 <div class="container">
+    <form action="#" method="post">
     <div class="row">
         <div class="col m6">
             <h2 class="center-align">Inloggen</h2>
@@ -31,13 +36,13 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="signInStudentnumber" type="text" class="validate" placeholder="studentnummer">
+                            <input id="userID" type="text" class="validate" placeholder="studentnummer">
                             
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="signInPass" type="password" class="validate" placeholder="Wachtwoord">
+                            <input id="password" type="password" class="validate" placeholder="Wachtwoord">
                             
                         </div>
                     </div>
@@ -75,7 +80,8 @@
                     <div class="row">
                         <div class="col m12">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="button" name="action">Aanmelden</button>
+                                <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Aanmelden</button>
+                           <input type="submit" name="submit" value="submit"><br>
                             </p>
                         </div>
                     </div>
@@ -83,6 +89,7 @@
             </div>
         </div>
     </div>
+</form>
 </div>
    <footer class="page-footer orange">
     <div class="container"> 
@@ -91,4 +98,17 @@
     </div>
   </footer>     
     </body>
+    <?php
+    
+    if (isset($_POST["submit"])) {
+    $userID = $_POST["userID"];
+    $password = $_POST["password"];
+
+    $test = Inlog($userID, $password);
+    foreach ($test as $value) {
+        echo $value. "<br>";
+    }
+}
+    
+    ?>
 </html>
