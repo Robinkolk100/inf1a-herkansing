@@ -5,63 +5,37 @@ function NewDocument($documentName)
     $errcount = 0;
     $message = array();
         // Check if variable is an integer
-    if ((empty($student_ID))) {
+    if ((empty($documentName))) {
         array_push($message, "Niks ingevult<br>");
     }
     $errcount = count($message);
-    if ($errcount === 0) {
+    if ($errcount == 0) {
         // kijken ales er error is
         if ($errcount == 0) {
             $conn = dbConnect();
             $documentName = mysqli_real_escape_string($conn, $documentName);
             $documentName = htmlentities($documentName);
-            // Mysql_num_row is counting table row
-            $count = $result->num_rows;
-            $sql = "INSERT INTO `documents` (`documentName`) VALUES ('" . $documentName . "')";
+            $sql = "INSERT INTO `documents` (`documentID`,`documentName`) VALUES ( NULL, '" . $documentName . "')";
 
             if ($conn->query($sql) === true) {
-                array_push($message, "New record created successfully<br>");
+                array_push($message, "successfully created ".$documentName."<br>");
+            } else {
+                array_push($message, "Er is iets mis gegaan<br>");
             }
             /* close connection */
             $conn->close();
+            return $message;
         }
     } else {
-        $conn->close();
         return $message;
     }
-    function EditDocument()
-    {
-
-    }
-    function DeleteDocument()
-    {
-
-    }
-
-
-
-
-            /* close result set */
-    $result->close();
-            /* close connection */
-    $conn->close();
-    array_push($message, "is gelukt<br>");
-            //header('Location:login.php?status=succes');
-    return $message;
 }
-        
-        //als count niet 0 is heeft deze persoon zich al eerder opgegeven
-else {
-            /* close connection */
-    $conn->close();
-           // header('Location:login.php?status=fail');
-    array_push($message, "FAIL is al eerder opgegeven<br>");
-    return $message;
-}
+function EditDocument()
+{
 
-} else {
-    return $message;
 }
+function DeleteDocument()
+{
+
 }
-?>
 ?>

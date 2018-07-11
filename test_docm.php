@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include 'db_connect.php';
-include 'function_account.php';
+include 'function_document.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,7 @@ include 'function_account.php';
 if (isset($_POST["submit"])) {
 	$documentName = $_POST["documentName"];
 
-	$test = NewAccountUser($documentName);
+	$test = NewDocument($documentName);
 	foreach ($test as $value) {
 		echo "$value <br>";
 	}
