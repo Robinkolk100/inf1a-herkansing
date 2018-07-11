@@ -1,6 +1,9 @@
 <?php 
+	session_start();
+	echo $_SESSION['userID'];
 	include 'db_connect.php';
 	include 'function_addProject.php';
+	include 'function_addProjectMember.php';
 ?>
 <!DOCTYPE html>
 <html>

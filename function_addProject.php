@@ -30,7 +30,7 @@
     		{
                 $last_id = $conn->insert_id;
                 array_push($errorArray, "New record created successfully");
-                addProjectMember($_SESSION['userID'], $last_id);
+                addProjectMember($_SESSION["userID"], $last_id);
             } 
             else 
             {

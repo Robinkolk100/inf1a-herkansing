@@ -26,11 +26,11 @@ if (isset($_POST["submit"])) {
     }
 }
 print_r($_SESSION);
-if ($_SESSION["login"] = 1) {
-    Logout();
-} else {
-    echo "geen session";
-}
-print_r($_SESSION);
+// if ($_SESSION["login"] = 1) {
+//     Logout();
+// } else {
+//     echo "geen session";
+// }
+// print_r($_SESSION);
 ?>
 </html>
