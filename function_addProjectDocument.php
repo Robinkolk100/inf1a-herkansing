@@ -28,8 +28,8 @@
 
     		if($count == 0)
     		{
-    			$sql = "INSERT INTO `userproject` (`userID`, `projectID`, `WarningCount`) 
-    					VALUES ('".$newMember."', '".$project."', '0');";
+    			$sql = "INSERT INTO `projectdocuments` (`projectID`, `documentID`, `documentDeadline`) 
+    					VALUES ('".$projectID."', '".$documentID."', '".$documentDeadline."');";
 
     			if ($conn->query($sql) === true) 
     			{
