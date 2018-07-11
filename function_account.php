@@ -31,7 +31,7 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
             $userName = strstr($student_userEmail, '@', true); // user name
             $userName = str_replace('.', ' ', $userName); // replace dot met black space 
             $student_userPass = mysqli_real_escape_string($conn, $student_userPass);
-            $userPass_encrypt = password_hash($student_userPass, PASSWORD_DEFAULT);
+            $userPass_encrypt = hash('sha256', $student_userPass);
 
             $sql = "INSERT INTO `users` (`userID`, `userName`, `userEmail`, `userPass`) VALUES ('" . $student_ID . "', '" . $userName . "', '" . $student_userEmail . "', '" . $userPass_encrypt . "')";
 
