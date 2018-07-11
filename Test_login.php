@@ -17,13 +17,19 @@ include 'function_login.php';
 </body>
 <?php
 if (isset($_POST["submit"])) {
-	$userID = $_POST["userID"];
-	$password = $_POST["password"];
+    $userID = $_POST["userID"];
+    $password = $_POST["password"];
 
-	$test = Inlog($userID, $password);
-	foreach ($test as $value) {
-		echo "$value <br>";
-	}
+    $test = Inlog($userID, $password);
+    foreach ($test as $value) {
+        echo "$value <br>";
+    }
+}
+print_r($_SESSION);
+if ($_SESSION["login"] = 1) {
+    Logout();
+} else {
+    echo "geen session";
 }
 print_r($_SESSION);
 ?>

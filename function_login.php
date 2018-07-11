@@ -37,8 +37,8 @@ function Inlog($student_ID, $student_wachtwoord)
 
 function Logout()
 {
-    session_start();
+    session_unset();
     session_destroy();
-    header("Location:index.php?login=uitgelogt");
+    return;
 }
 ?>
