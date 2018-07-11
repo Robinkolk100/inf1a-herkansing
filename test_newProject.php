@@ -1,6 +1,6 @@
 <?php 
 	include 'db_connect.php';
-	include 'function_newPoject.php';
+	include 'function_addProject.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,10 +9,10 @@
 </head>
 <body>
 	<form action="#" method="post">
-		<input type="text" name="projectGroup"><br>
-		<input type="text" name="projectPeriod"><br>
-		<input type="text" name="projectYear"><br>
-		<input type="text" name="projectName"><br>
+		projectgroup : <input type="text" name="projectGroup"><br>
+		projectperiod : <input type="text" name="projectPeriod"><br>
+		projectyear : <input type="text" name="projectYear"><br>
+		projectname : <input type="text" name="projectName"><br>
 		<input type="submit" name="submit" value="submit"><br>
 	</form>
 </body>
@@ -23,7 +23,7 @@
 		$projectYear = $_POST["projectYear"];
 		$projectName = $_POST["projectName"];
 
-		$test = newProject($projectGroup, $projectPeriod, $projectYear, $projectName);
+		$test = addProject($projectGroup, $projectPeriod, $projectYear, $projectName);
 		foreach ($test as $value) {
 			echo "$value <br>";
 		}

@@ -1,6 +1,6 @@
 <?php
 
-	function newProject($projectGroup, $projectPeriod, $projectYear, $projectName)
+	function addProject($projectGroup, $projectPeriod, $projectYear, $projectName)
 	{
 		$errorArray = array();
 		$errCount = 0;
@@ -28,7 +28,9 @@
 
     		if ($conn->query($sql) === true) 
     		{
+                $last_id = $conn->insert_id;
                 array_push($errorArray, "New record created successfully");
+                addProjectMember($_SESSION['userID'], $last_id);
             } 
             else 
             {
