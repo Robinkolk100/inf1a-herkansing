@@ -36,7 +36,9 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
             $sql = "INSERT INTO `users` (`userID`, `userName`, `userEmail`, `userPass`) VALUES ('" . $student_ID . "', '" . $userName . "', '" . $student_userEmail . "', '" . $userPass_encrypt . "')";
 
             if ($conn->query($sql) === true) {
-                echo "New record created successfully<br>";
+                array_push($message, "New record created successfully<br>");
+                $_SESSION["userID"] = $student_ID;
+                $_SESSION["login"] = 1;
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
