@@ -1,6 +1,6 @@
 <?php
 
-	function deleteProjectDocument($projectID, $documentID)
+	function updateProjectDocument($projectID, $documentID, $documentDeadline)
 	{
 		$count = 0;
 		$errorCount = 0;
@@ -28,11 +28,11 @@
 
     		if($count > 0)
     		{
-    			$sql = "DELETE FROM `projectdocuments` WHERE `projectID`='".$projectID."' AND `documentID`='".$documentID."';";
+    			$sql = "UPDATE `projectdocuments` SET `documentDeadline`='".$documentDeadline."' WHERE `projectID`='".$projectID."' AND `documentID`='".$documentID."';";
 
     			if ($conn->query($sql) === true) 
     			{
-    				array_push($errorArray, "Document has been unlinked<br>");
+    				array_push($errorArray, "Document deadline has been updated <br>");
     			}
     			else 
     			{

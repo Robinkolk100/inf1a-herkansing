@@ -1,6 +1,6 @@
 <?php 
 	include 'db_connect.php';
-	include 'function_addProjectDocument.php';
+	include 'function_deleteProjectDocument.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,6 @@
 	<form action="#" method="post">
 		projectID : <input type="text" name="projectID"><br>
 		documentID : <input type="text" name="documentID"><br>
-		documentLink : <input type="text" name="documentLink"><br>
-		documentUpload : <input type="date" name="documentUpload"><br>
 		<input type="submit" name="submit" value="submit"><br>
 	</form>
 </body>
@@ -20,9 +18,7 @@
 	if (isset($_POST["submit"])) {
 		$projectID = $_POST["projectID"];
 		$documentID = $_POST["documentID"];
-		$documentLink = $_POST["documentLink"];
-		$documentUpload = $_POST["documentUpload"];
-		$test = addProjectDocument($projectID, $documentID, $deadline);
+		$test = deleteProjectDocument($projectID, $documentID);
 		foreach ($test as $value) {
 			echo "$value <br>";
 		}

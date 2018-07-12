@@ -1,6 +1,7 @@
 <?php
 include 'db_connect.php';
 include 'function_login.php';
+include 'function_account.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@ include 'function_login.php';
                 <form action="#"  method="post" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="userID" type="text" name="userID" class="validate" placeholder="studentnummer">
+                            <input id="userID" type="number" name="userID" class="validate" placeholder="Studentnummer">
                             
                         </div>
                     </div>
@@ -49,31 +50,41 @@ include 'function_login.php';
                     <div class="row">
                         <div class="col m12">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="button" name="action">Inloggen</button>
-                                <input type="submit" name="submit" value="submit"><br>
+                                <input class="waves-effect waves-light btn" type="submit" name="submitinlog" value="Inloggen"><br>
                             </p>
                         </div>
                     </div>
                 </form>
             </div>
+            <?php 
+            if (isset($_POST["submitinlog"])) {
+                $userID = $_POST["userID"];
+                $password = $_POST["password"];
+
+                $inlog = Inlog($userID, $password);
+                foreach ($inlog as $value) {
+                    echo $value . "<br>";
+                }
+            }
+            ?>
         </div>
         <div class="col m6">
             <h2 class="center-align">Maak een account aan</h2>
             <div class="row">
-                <form class="col s12">
+                <form  action="#"  method="post" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="signUpUserID" type="email" class="validate" placeholder="Studentnummer">
+                            <input id="signUpUserID" name="signUpUserID" type="number" class="validate" placeholder="Studentnummer">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="signUpEmail" type="email" class="validate" placeholder="Email">
+                            <input id="signUpEmail" name="signUpEmail" type="email" class="validate" placeholder="Email">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="signUpPass" type="password" class="validate" placeholder="Wachtwoord">
+                            <input id="signUpPass" name="signUpPass" type="password" class="validate" placeholder="Wachtwoord">
                         </div>
                     </div>
                    
@@ -81,31 +92,30 @@ include 'function_login.php';
                     <div class="row">
                         <div class="col m12">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Aanmelden</button>
+                                <input class="waves-effect waves-light btn" type="submit" name="submitacc" value="Aanmelden"><br>
                             </p>
                         </div>
                     </div>
                 </form>
             </div>
+            <?php
+            if (isset($_POST["submitacc"])) {
+                $signUpUserID = $_POST["signUpUserID"];
+                $signUpEmail = $_POST["signUpEmail"];
+                $signUpPass = $_POST["signUpPass"];
+
+                $account = NewAccountUser($signUpUserID, $signUpEmail, $signUpPass);
+                foreach ($account as $value) {
+                    echo $value . "<br>";
+                }
+            }
+            ?>
         </div>
     </div>
 </form>
 </div>
    <footer class="page-footer orange">
     <div class="container"> 
-    <?php
-    
-    if (isset($_POST["submit"])) {
-    $userID = $_POST["userID"];
-    $password = $_POST["password"];
-
-    $test = Inlog($userID, $password);
-    foreach ($test as $value) {
-        echo $value. "<br>";
-    }
-}
-    
-    ?>
     </div>
     <div class="footer-copyright">
     </div>

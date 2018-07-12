@@ -7,12 +7,12 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
 
     //Validate E-mail
     if (!filter_var($student_userEmail, FILTER_VALIDATE_EMAIL)) {
-        array_push($message, "Invalid email format<br>");
+        array_push($message, "<span class='card-title red-text text-accent-4'><h3>Geen valid Email is opgegeven</span></h3>");
     }
     
     // Check if variable is an integer
     if (!ctype_digit(strval($student_ID))) {
-        array_push($message, "Your variable is not an integer<br>");
+        array_push($message, "<span class='card-title red-text text-accent-4'><h3>Opgegeven variable is geen nummer </h3></span>");
     }
 
     $errcount = count($message);
@@ -36,17 +36,17 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
             $sql = "INSERT INTO `users` (`userID`, `userName`, `userEmail`, `userPass`) VALUES ('" . $student_ID . "', '" . $userName . "', '" . $student_userEmail . "', '" . $userPass_encrypt . "')";
 
             if ($conn->query($sql) === true) {
-                array_push($message, "New record created successfully<br>");
+                array_push($message, "<span class='card-title lime-text text-accent-4'><h3>Nieuwe gebruiker is toegevoegd</span></h3>");
                 $_SESSION["userID"] = $student_ID;
                 $_SESSION["login"] = 1;
             } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                echo "<span class='card-title red-text text-accent-4'>  Error: " . $sql . "</span><br>" . $conn->error;
             }
             /* close result set */
             $result->close();
             /* close connection */
             $conn->close();
-            array_push($message, "is gelukt<br>");
+            //array_push($message, "<span class='card-title lime-text text-accent-4'>is gelukt</span>");
             //header('Location:login.php?status=succes');
             return $message;
         }
@@ -55,8 +55,8 @@ function NewAccountUser($student_ID, $student_userEmail, $student_userPass)
         else {
             /* close connection */
             $conn->close();
-           // header('Location:login.php?status=fail');
-            array_push($message, "FAIL is al eerder opgegeven<br>");
+            // als wachtwoord of nummer niet kloppen 
+            array_push($message, "<span class='card-title red-text text-accent-4'><h3>Email of nummer is al eerder opgegeven</span></h3>");
             return $message;
         }
 
