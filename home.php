@@ -11,6 +11,7 @@
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+    
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="home.php" class="brand-logo">SmartProject</a>
       <ul class="right hide-on-med-and-down">
@@ -23,8 +24,22 @@
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+    
   <div class="section no-pad-bot" id="index-banner">
+        </div>
+    <ul id="nav-mobile" class="sidenav sidenav-fixed" style="transform: translateX(0%);">
+        <li class="bold"><a href="#" class="waves-effect waves-teal">About</a></li>
+        
+      </ul>
+     
+   
+    
+    
     <div class="container">
+        
+        
+        
+        
       <br><br>
      
       <div class="row center">
@@ -36,6 +51,8 @@
       <br><br>
 
     </div>
+    
+    
   </div>
 
 
