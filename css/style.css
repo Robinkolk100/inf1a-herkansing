@@ -12,3 +12,11 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+#left-sidebar-nav {
+    position: left;
+    width: 200px;
+    left: 20px;
+    z-index: 0;
+    height: auto;
+}
+ 
