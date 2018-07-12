@@ -37,7 +37,7 @@ include 'function_account.php';
                 <form action="#"  method="post" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="userID" type="text" name="userID" class="validate" placeholder="studentnummer">
+                            <input id="userID" type="number" name="userID" class="validate" placeholder="Studentnummer">
                             
                         </div>
                     </div>
@@ -50,8 +50,7 @@ include 'function_account.php';
                     <div class="row">
                         <div class="col m12">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="button" name="action">Inloggen</button>
-                                <input type="submit" name="submitinlog" value="submit"><br>
+                                <input class="waves-effect waves-light btn" type="submit" name="submitinlog" value="Inloggen"><br>
                             </p>
                         </div>
                     </div>
@@ -93,8 +92,7 @@ include 'function_account.php';
                     <div class="row">
                         <div class="col m12">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Aanmelden</button>
-                                <input type="submit" name="submitacc" value="submit"><br>
+                                <input class="waves-effect waves-light btn" type="submit" name="submitacc" value="Aanmelden"><br>
                             </p>
                         </div>
                     </div>
