@@ -11,7 +11,7 @@ function Inlog($student_ID, $student_wachtwoord)
     $student_wachtwoord = mysqli_real_escape_string($conn, $student_wachtwoord);
         // Check if variable is an integer
     if (!ctype_digit(strval($student_ID))) {
-        array_push($message, "Your variable is not an integer<br>");
+        array_push($message, "<span class='card-title red-text text-accent-4'><h3>Vul een nummer in bij studentnummer</h3></span>");
     }
     $hash = hash('sha256', $student_wachtwoord);
 
@@ -28,14 +28,14 @@ function Inlog($student_ID, $student_wachtwoord)
         }
     }
     if ($count == 0) {
-        array_push($message, "Wrong userID or Password");
+        array_push($message, "<span class='card-title red-text text-accent-4'><h3>Verkeerde gebruikers naam of wachtwoord </h3></span>");
         return $message;
     }
      /* close result set */
     $result->close();
     /* close connection */
     $conn->close();
-    array_push($message, "is gelukt");
+    array_push($message, "<span class='card-title lime-text text-accent-4'><h3>U bent ingelogt</span></h3>");
     return $message;
 }
 
@@ -43,6 +43,6 @@ function Logout()
 {
     session_unset();
     session_destroy();
-    return;
+    return "<span class='card-title lime-text text-accent-4'><h3>U bent uit gelogt</h3></span>";
 }
 ?>
