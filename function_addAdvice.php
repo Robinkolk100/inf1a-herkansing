@@ -25,7 +25,7 @@
     		if($count > 0)
     		{
     			$sql = "INSERT INTO `advice` (`adviceID`, `documentID`, `adviceType`, `adviceTekst`) 
-    					VALUES (NULL, '".$documentID."', '".."', '".."');";
+    					VALUES (NULL, '".$documentID."', '".$adviceType."', '".$adviceTekst."');";
 
     			if ($conn->query($sql) === true) 
     			{

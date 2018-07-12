@@ -1,34 +1,47 @@
 <?php
 
-	function addProjectMember($newMember, $project) 
+	function addProjectMember($userID, $projectID) 
 	{
-		$count = 0;
+		$checkUser = 0;
+        $checkConnectedUser = 0;
 		$errorCount = 0;
 		$errorArray = array();
 
-		if (!ctype_digit(strval($newMember))) {
+		if (!ctype_digit(strval($userID))) {
         	array_push($errorArray, "The student number need to be numbers only");
     	}
 
-    	if (!ctype_digit(strval($project))) {
+    	if (!ctype_digit(strval($projectID))) {
         	array_push($errorArray, "error on project selection");
     	}
 
     	$errorCount = count($errorArray);
     	if($errorCount == 0)
     	{
-    		if($count == 0)
+            $conn = dbConnect();
+    	
+        	if($checkUser == 0)
     		{
-    			$conn = dbConnect();
-    			$result = $conn->query(" SELECT `userID` FROM `users` WHERE `userID` = '".$newMember."'");
+    			$result = $conn->query("SELECT `userID` FROM `users` WHERE `userID` = '".$userID."';");
 
-            	$count = $result->num_rows;
+            	$checkUser = $result->num_rows;
+                $result->close();
     		}
 
-    		if($count > 0)
+            if($checkConnectedUser)
+            {
+                $result = $conn->query("SELECT * FROM `userproject` 
+                                        WHERE `userID`='".$userID."' AND `projectID`='".$projectID."';");
+
+                $checkConnectedUser = $result->num_rows;
+                echo $checkConnectedUser;
+                $result->close();
+            }
+
+    		if($checkUser > 0 && $checkConnectedUser == 0)
     		{
     			$sql = "INSERT INTO `userproject` (`userID`, `projectID`, `WarningCount`) 
-    					VALUES ('".$newMember."', '".$project."', '0');";
+    					VALUES ('".$userID."', '".$projectID."', '0');";
 
     			if ($conn->query($sql) === true) 
     			{
@@ -39,7 +52,6 @@
     				echo "Error: " . $sql . "<br>" . $conn->error;
     			}
 
-    			$result->close();
     			$conn->close();
             	array_push($errorArray, "is gelukt<br>");
 
