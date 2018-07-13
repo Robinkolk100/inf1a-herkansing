@@ -17,14 +17,27 @@
         	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is een verkeerde jaar waarde ingevuld.</span></h3>");
     	}
 
+        // check if periode not bigger than 5
+        if ($projectPeriode > 5) 
+        {
+            array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is een te hoge periode waarde ingevuld.</span></h3>");
+        } 
+
+        if ($ProjectName == '' || $projectPeriode == '' || $projectGroup == '') 
+        {
+            array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Alle velden moeten worden ingevuld.</span></h3>");
+        }
+
     	$errCount = count($errorArray);
 
         // Adding project to database
     	if($errCount == 0)
     	{
-    		$projectName = htmlspecialchars($projectName);
-
     		$conn = dbConnect();
+            $ProjectName = htmlentities($ProjectName);
+            $projectGroup = htmlentities($projectGroup);
+            $ProjectName = mysqli_real_escape_string($conn, $ProjectName);
+            $projectGroup = mysqli_real_escape_string($conn, $projectGroup);
 
     		$sql = "INSERT INTO `projects` 
     		(`projectID`, `projectGroup`, `projectPeriode`, `projectYear`, `ProjectName`) 
