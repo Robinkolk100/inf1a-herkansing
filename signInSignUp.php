@@ -37,14 +37,12 @@ include 'function_account.php';
                 <form action="#"  method="post" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="userID" type="number" name="userID" class="validate no-spinners" placeholder="Studentnummer">
-                            
+                            <input id="userID" type="number" name="userID" class="validate" placeholder="Studentnummer">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" name="password" class="validate" placeholder="Wachtwoord">
-                            
+                            <input id="password" type="password" name="password" class="validate" placeholder="Wachtwoord">  
                         </div>
                     </div>
                     <div class="row">
