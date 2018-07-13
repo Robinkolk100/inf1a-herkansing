@@ -7,12 +7,16 @@
 		$errorCount = 0;
 		$errorArray = array();
 
-		if (!ctype_digit(strval($userID))) {
-        	array_push($errorArray, "The student number need to be numbers only");
+        // Check if variable is an integer
+		if (!ctype_digit(strval($userID))) 
+        {
+        	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het gebuiker selecteren.</span></h3>");
     	}
 
-    	if (!ctype_digit(strval($projectID))) {
-        	array_push($errorArray, "error on project selection");
+        // Check if variable is an integer
+    	if (!ctype_digit(strval($projectID))) 
+        {
+        	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het project selecteren.</span></h3>");
     	}
 
     	$errorCount = count($errorArray);
@@ -20,14 +24,17 @@
     	{
             $conn = dbConnect();
     	
+            // check user exists
         	if($checkUser == 0)
     		{
     			$result = $conn->query("SELECT `userID` FROM `users` WHERE `userID` = '".$userID."';");
 
             	$checkUser = $result->num_rows;
+                /* close result set */
                 $result->close();
     		}
 
+            // check if user is already linked
             if($checkConnectedUser)
             {
                 $result = $conn->query("SELECT * FROM `userproject` 
@@ -35,9 +42,11 @@
 
                 $checkConnectedUser = $result->num_rows;
                 echo $checkConnectedUser;
+                /* close result set */
                 $result->close();
             }
 
+            //Adding document to project
     		if($checkUser > 0 && $checkConnectedUser == 0)
     		{
     			$sql = "INSERT INTO `userproject` (`userID`, `projectID`, `WarningCount`) 
@@ -45,15 +54,17 @@
 
     			if ($conn->query($sql) === true) 
     			{
-    				array_push($errorArray, "New record created successfully<br>");
+    				array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>
+                        Nieuwe gebruiker is toegevoegd aan het project.</span></h3>");
     			}
     			else 
     			{
-    				echo "Error: " . $sql . "<br>" . $conn->error;
+    				array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het koppelen van de gebruiker</span></h3>");
+                    //echo "Error: " . $sql . "<br>" . $conn->error;
     			}
 
+                /* close connection */
     			$conn->close();
-            	array_push($errorArray, "is gelukt<br>");
 
             	return $errorArray;
     		}
@@ -62,7 +73,7 @@
            	 	/* close connection */
             	$conn->close();
           	 	// header('Location:login.php?status=fail');
-            	array_push($errorArray, "FAIL is al eerder opgegeven<br>");
+            	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>De gebruiker bestaat niet of is al gekoppeld</span></h3>");
             	return $errorArray;
         	}
     	}
