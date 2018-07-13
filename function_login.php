@@ -23,10 +23,10 @@ function Inlog($student_ID, $student_wachtwoord)
     // Mysql_num_row is counting table row
     $count = $result->num_rows;
 
-    // als result matched $student_ID and $student_wachtwoord, table row must be 1 row
+    // Using query result to log in 
     if ($count == 1) 
     {
-        //ID opslaan en in session zeten 
+        // Save query result in Session 
         while ($row = mysqli_fetch_array($result)) 
         {
             $_SESSION["userID"] = $row['userID'];
@@ -50,6 +50,7 @@ function Inlog($student_ID, $student_wachtwoord)
 
 function Logout()
 {
+    // Stopping session to logout the user
     session_unset();
     session_destroy();
     return "<span class='card-title lime-text text-accent-4'><h3>U bent uit gelogt</h3></span>";

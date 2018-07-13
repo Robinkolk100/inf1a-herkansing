@@ -6,11 +6,13 @@
 		$errorCount = 0;
 		$errorArray = array();
 
-		if (!ctype_digit(strval($documentID))) {
+		if (!ctype_digit(strval($documentID))) 
+        {
         	array_push($errorArray, "Error on document selection");
     	}
 
-    	if (!ctype_digit(strval($projectID))) {
+    	if (!ctype_digit(strval($projectID))) 
+        {
         	array_push($errorArray, "Error on project selection");
     	}
 

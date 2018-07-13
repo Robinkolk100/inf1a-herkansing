@@ -55,7 +55,7 @@
                 //echo "Error: " . $sql . "<br>" . $conn->error;
             }
 
-            /* close connection */
+            /* Close connection */
             $conn->close();
             
             return $errorArray;

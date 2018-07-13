@@ -60,7 +60,7 @@
            	 	/* close connection */
             	$conn->close();
           	 	// header('Location:login.php?status=fail');
-            	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>De gekozen document is niet gekoppeld aan het project.    </span></h3>");
+            	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>De gekozen document is niet gekoppeld aan het project.</span></h3>");
 
             	return $errorArray;
         	}
