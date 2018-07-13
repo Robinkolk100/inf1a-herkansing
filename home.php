@@ -49,16 +49,19 @@ foreach ($projects as $project) { ?>
                       <li>
                         <a href="#">
                           <?php 
-                          echo "INF";
-                          echo $project['projectPeriode'];
-                          echo $project['projectGroup'];
-                          echo $project['projectYear'] . " ";
-                          echo $project['projectName'];
+                          if ($project['projectYear'] == 1) {
+                            echo "INF";
+                            echo $project['projectPeriode'];
+                            echo $project['projectGroup'];
+                            echo $project['projectYear'] . " ";
+                            echo $project['projectName'];
+                          }
                           ?>
                         </a>
                       </li>
                       <?php 
-                    } ?>
+                    }
+                    ?>
                     </ul>
                   </div>
                 </li>
@@ -68,13 +71,26 @@ foreach ($projects as $project) { ?>
                     <span class="nav-text">Jaar 2</span>
                   </a>
                   <div class="collapsible-body" style="display:block;">
-                    <ul>
+                  <ul>
+<?php 
+$projects = getProjects($_SESSION['userID']);
+foreach ($projects as $project) { ?>
                       <li>
                         <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 1</span>
+                          <?php 
+                          if ($project['projectYear'] == 2) {
+                            echo "INF";
+                            echo $project['projectPeriode'];
+                            echo $project['projectGroup'];
+                            echo $project['projectYear'] . " ";
+                            echo $project['projectName'];
+                          }
+                          ?>
                         </a>
                       </li>
+                      <?php 
+                    }
+                    ?>
                     </ul>
                   </div>
                 </li>
@@ -84,13 +100,26 @@ foreach ($projects as $project) { ?>
                     <span class="nav-text">Jaar 3</span>
                   </a>
                   <div class="collapsible-body"style="display:block;">
-                    <ul>
+                  <ul>
+<?php 
+$projects = getProjects($_SESSION['userID']);
+foreach ($projects as $project) { ?>
                       <li>
                         <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 3</span>
+                          <?php 
+                          if ($project['projectYear'] == 3) {
+                            echo "INF";
+                            echo $project['projectPeriode'];
+                            echo $project['projectGroup'];
+                            echo $project['projectYear'] . " ";
+                            echo $project['projectName'];
+                          }
+                          ?>
                         </a>
                       </li>
+                      <?php 
+                    }
+                    ?>
                     </ul>
                   </div>
                 </li>
