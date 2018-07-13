@@ -6,19 +6,22 @@
 		$errorCount = 0;
 		$errorArray = array();
 
+        // Check if variable is an integer
 		if (!ctype_digit(strval($documentID))) 
         {
-        	array_push($errorArray, "Error on document selection");
+        	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het document selecteren.</span></h3>");
     	}
 
+        // Check if variable is an integer
     	if (!ctype_digit(strval($projectID))) 
         {
-        	array_push($errorArray, "Error on project selection");
+        	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het project selecteren.</span></h3>");
     	}
 
     	$errorCount = count($errorArray);
     	if($errorCount == 0)
     	{
+            // Check if document is linked to project
     		if($count == 0)
     		{
     			$conn = dbConnect();
@@ -28,6 +31,7 @@
             	$count = $result->num_rows;
     		}
 
+            // Update project document 
     		if($count > 0)
     		{
     			$sql = "UPDATE `projectdocuments` 
@@ -36,19 +40,21 @@
                         AND `documentID`='".$documentID."';";
 
     			if ($conn->query($sql) === true) 
-    			{
-    				array_push($errorArray, "Record has been updated<br>");
-    			}
-    			else 
-    			{
-    				echo "Error: " . $sql . "<br>" . $conn->error;
-    			}
+                {
+                    array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Document is ingeleverd.</span></h3>");
+                }
+                else 
+                {
+                    array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het inleveren.</span></h3>");
+                    //echo "Error: " . $sql . "<br>" . $conn->error;
+                }
 
-    			$result->close();
-    			$conn->close();
-            	array_push($errorArray, "is gelukt<br>");
+                /* close result set */
+                $result->close();
+                /* close connection */
+                $conn->close();
 
-            	return $errorArray;
+                return $errorArray;
     		}
     		else 
     		{

@@ -9,13 +9,13 @@
         // Check if variable is an integer
 		if (!ctype_digit(strval($projectID))) 
         {
-        	array_push($errorArray, "Error on project selection");
+        	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het project selecteren.</span></h3>");
     	}
 
         // Check if variable is an integer
     	if (!ctype_digit(strval($documentID))) 
         {
-        	array_push($errorArray, "Error on document selection");
+        	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het document selecteren.</span></h3>");
     	}
 
     	$errorCount = count($errorArray);
@@ -59,7 +59,7 @@
             	$conn->close();
           	 	// header('Location:login.php?status=fail');
             	array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>De gekozen document is niet gekoppeld aan het project.</span></h3>");
-                
+
             	return $errorArray;
         	}
     	}
