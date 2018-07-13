@@ -13,15 +13,19 @@
 	font-size: inherit;
 }
 #left-sidebar-nav {
-    position: left;
+  float: left !important;
     width: 200px;
     left: 20px;
     z-index: 0;
     height: auto;
 }
 #container{
-float:left;
-	
+  float: left;
+  width: 100%;
+}
+
+#card-stats {
+  display: inline-block;
 }
 input[type='number'] {
     -moz-appearance:textfield;
@@ -31,4 +35,3 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
- 
