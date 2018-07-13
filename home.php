@@ -3,6 +3,7 @@ session_start();
 include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
+include 'function_getProjects.php';
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -42,12 +43,22 @@ include 'function_account.php';
                   </a>
                   <div class="collapsible-body" style="display: block;">
                     <ul>
+<?php 
+$projects = getProjects($_SESSION['userID']);
+foreach ($projects as $project) { ?>
                       <li>
                         <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>project</span><!--hier code voor project  -->
+                          <?php 
+                          echo "INF";
+                          echo $project['projectPeriode'];
+                          echo $project['projectGroup'];
+                          echo $project['projectYear'] . " ";
+                          echo $project['projectName'];
+                          ?>
                         </a>
                       </li>
+                      <?php 
+                    } ?>
                     </ul>
                   </div>
                 </li>

@@ -11,5 +11,4 @@
 		echo $project['projectYear']."<br>";
 		echo $project['projectName']."<p>";
 	}
-
 ?>
