@@ -37,7 +37,7 @@ include 'function_account.php';
                 <form action="#"  method="post" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="userID" type="number" name="userID" class="validate" placeholder="Studentnummer">
+                            <input id="userID" type="number" name="userID" class="validate no-spinners" placeholder="Studentnummer">
                             
                         </div>
                     </div>
