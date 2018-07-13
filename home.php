@@ -1,3 +1,9 @@
+<?php 
+session_start();
+include 'db_connect.php';
+include 'function_login.php';
+include 'function_account.php';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -28,6 +34,7 @@
     <aside id="left-sidebar-nav">
           <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
+              <a  href = "test_addProject.php"  class="waves-effect waves-light btn">nieuw project</a>
                 <li class="bold active">
                   <a class="collapsible-header waves-effect waves-cyan active">
                     <i class="material-icons">dashboard</i>
@@ -38,25 +45,7 @@
                       <li>
                         <a href="#">
                           <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 1</span>
-                        </a>
-                      </li>
-                      <li class="active">
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 2</span>
-                        </a>
-                      </li>
-                      <li class="active">
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 3</span>
-                        </a>
-                      </li>
-                      <li class="active">
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 4</span>
+                          <span>project</span><!--hier code voor project  -->
                         </a>
                       </li>
                     </ul>
@@ -75,24 +64,6 @@
                           <span>periode 1</span>
                         </a>
                       </li>
-                      <li class="active">
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 2</span>
-                        </a>
-                      </li>
-                      <li class="active">
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 3</span>
-                        </a>
-                      </li>
-                      <li class="active">
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 4</span>
-                        </a>
-                      </li>
                     </ul>
                   </div>
                 </li>
@@ -107,12 +78,6 @@
                         <a href="#">
                           <i class="material-icons">keyboard_arrow_right</i>
                           <span>periode 3</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>periode 4</span>
                         </a>
                       </li>
                     </ul>
