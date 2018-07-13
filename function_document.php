@@ -22,11 +22,12 @@ function NewDocument($documentName)
 
         if ($conn->query($sql) === true) 
         {
-            array_push($message, "successfully created ".$documentName."<br>");
+            array_push($message, "<span class='card-title red-text text-accent-4'><h3>".$documentName." is aangemaakt.</span></h3>");
         } 
         else 
         {
-            array_push($message, "Er is iets mis gegaan<br>");
+            array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het aanmaken van het document</span></h3>");
+                //echo "Error: " . $sql . "<br>" . $conn->error;
         }
         /* close connection */
         $conn->close();
