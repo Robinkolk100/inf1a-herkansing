@@ -26,6 +26,8 @@
             // Check if there are results
     		if($result->num_rows > 0)
     		{
+                /* close connection */
+                $conn->close();
     			//return sql results
     			return $result;
     			/* 
@@ -41,6 +43,9 @@
     		}
     		else 
     		{
+                /* close connection */
+                $conn->close();
+                //return sql results
     			array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>U hebt nog niet ingeschreven voor een project.</span></h3>");
 
    				return $errorArray;

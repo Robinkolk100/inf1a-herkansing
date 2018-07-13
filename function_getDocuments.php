@@ -6,13 +6,11 @@
 
         $conn = dbConnect();
         $result = $conn->query("SELECT `documentID`, `documentName` 
-                                FROM `advice`;");
-
+                                FROM `documents`;");
+        
         // Check if there are results
         if($result->num_rows > 0)
         {
-            /* close result set */
-            $result->close();
             /* close connection */
             $conn->close();
             //return sql results
@@ -28,11 +26,9 @@
         }
         else 
         {
-            /* close result set */
-            $result->close();
             /* close connection */
             $conn->close();
-            array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>U hebt nog niet ingeschreven voor een project.</span></h3>");
+            array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er zijn nog geen documenten aangemaakt.</span></h3>");
             //echo "Error: " . $sql . "<br>" . $conn->error;
             return $errorArray;
         }

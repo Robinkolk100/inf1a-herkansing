@@ -19,14 +19,10 @@
             $conn = dbConnect();
             $result = $conn->query("SELECT `adviceType`, `adviceTekst` 
                                     FROM `advice` 
-                                    WHERE `documentID`='".$documentID."'
-                                    ORDER BY `adviceType` ASC;");
-
+                                    WHERE `documentID`='".$documentID."';");
             // Check if there are results
             if($result->num_rows > 0)
             {
-                /* close result set */
-                $result->close();
                 /* close connection */
                 $conn->close();
                 //return sql results
