@@ -38,6 +38,7 @@
             $projectGroup = htmlentities($projectGroup);
             $ProjectName = mysqli_real_escape_string($conn, $ProjectName);
             $projectGroup = mysqli_real_escape_string($conn, $projectGroup);
+            $projectName = strtoupper($projectName);
 
     		$sql = "INSERT INTO `projects` 
     		(`projectID`, `projectGroup`, `projectPeriode`, `projectYear`, `ProjectName`) 
@@ -47,6 +48,8 @@
     		{
                 $last_id = $conn->insert_id;
                 array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Project is succesful aangemaakt.</span></h3>");
+
+                // Add current user to project
                 addProjectMember($_SESSION["userID"], $last_id);
             } 
             else 
