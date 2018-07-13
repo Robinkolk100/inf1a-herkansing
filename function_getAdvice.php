@@ -19,11 +19,16 @@
             $conn = dbConnect();
             $result = $conn->query("SELECT `adviceType`, `adviceTekst` 
                                     FROM `advice` 
-                                    WHERE `documentID`='".$documentID."';");
+                                    WHERE `documentID`='".$documentID."'
+                                    ORDER BY `adviceType` ASC;");
 
             // Check if there are results
             if($result->num_rows > 0)
             {
+                /* close result set */
+                $result->close();
+                /* close connection */
+                $conn->close();
                 //return sql results
                 return $result;
                 /* 
@@ -37,8 +42,13 @@
             }
             else 
             {
-                array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>U hebt nog niet ingeschreven voor een project.</span></h3>");
+                /* close result set */
+                $result->close();
+                /* close connection */
+                $conn->close();
+                array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan met het uploaden van de advies.</span></h3>");
 
+                //echo "Error: " . $sql . "<br>" . $conn->error;
                 return $errorArray;
             }
         }
