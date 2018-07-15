@@ -34,7 +34,8 @@ include 'function_getProjects.php';
       <div class="wrapper">
         <!-- START LEFT SIDEBAR NAV-->
     <aside id="left-sidebar-nav">
-          <li class="no-padding">
+        <ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y" style="width: 300px; transform: translateX(-100%);">
+            <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
               <a  href = "test_addProject.php"  class="waves-effect waves-light btn">nieuw project</a>
                 <li class="bold active">
@@ -111,6 +112,16 @@ foreach ($projects as $project) {
                 </li>
               </ul>
               </li>
+              <div class="ps-scrollbar-x-rail" style="left: 0px; bottom:3px">
+                  <div class="ps-scrollbar-x" style="left: 0px; width:0px;>"
+              </div>
+                  <div class="ps-scroll-y-rail" style="top: 0px; height:392.8px; right: 3px;">
+                    <div class="ps-scrollbar-y" style="top: 0px; height:116px;">
+                  </div>
+        </ul>
+        <a class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-activates="slide-out">
+            <i class="material-icons">menu</i>
+        </a>     
         </aside>
       
         <!-- END LEFT SIDEBAR NAV-->
