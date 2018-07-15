@@ -45,21 +45,16 @@ include 'function_getProjects.php';
                     <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
-foreach ($projects as $project) { ?>
-                      <li>
-                        <a href="#">
-                          <?php 
+foreach ($projects as $project) {
                           if ($project['projectYear'] == 1) {
+                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"</a><?php
                             echo "INF";
                             echo $project['projectPeriode'];
                             echo $project['projectGroup'];
                             echo $project['projectYear'] . " ";
                             echo $project['projectName'];
+                            echo"</li>";
                           }
-                          ?>
-                        </a>
-                      </li>
-                      <?php 
                     }
                     ?>
                     </ul>
@@ -74,21 +69,16 @@ foreach ($projects as $project) { ?>
                   <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
-foreach ($projects as $project) { ?>
-                      <li>
-                        <a href="#">
-                          <?php 
+foreach ($projects as $project) {
                           if ($project['projectYear'] == 2) {
+                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"</a><?php
                             echo "INF";
                             echo $project['projectPeriode'];
                             echo $project['projectGroup'];
                             echo $project['projectYear'] . " ";
                             echo $project['projectName'];
+                            echo"</li>";
                           }
-                          ?>
-                        </a>
-                      </li>
-                      <?php 
                     }
                     ?>
                     </ul>
@@ -103,21 +93,16 @@ foreach ($projects as $project) { ?>
                   <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
-foreach ($projects as $project) { ?>
-                      <li>
-                        <a href="#">
-                          <?php 
+foreach ($projects as $project) {
                           if ($project['projectYear'] == 3) {
+                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"</a><?php
                             echo "INF";
                             echo $project['projectPeriode'];
                             echo $project['projectGroup'];
                             echo $project['projectYear'] . " ";
                             echo $project['projectName'];
+                            echo"</li>";
                           }
-                          ?>
-                        </a>
-                      </li>
-                      <?php 
                     }
                     ?>
                     </ul>
