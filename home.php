@@ -4,6 +4,7 @@ include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
 include 'function_getProjects.php';
+//print_r($_SESSION)
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -115,6 +116,10 @@ foreach ($projects as $project) {
         <!-- END LEFT SIDEBAR NAV-->
         <!-- //////////////////////////////////////////////////////////////////////////// -->
         <!--START CONTENT-->
+        <?php 
+        if(isset($_GET['project'])){
+          echo"laat project gegevens zien";
+?>       
         <div class="container">
             <!--card stats start-->
             <div id="card-stats">
@@ -334,6 +339,10 @@ foreach ($projects as $project) {
               </div>
             </div>
             <!--work collections end-->
+            <?php  } else {
+                  echo"geen project geselect";
+                }
+        ?>
             <!--card widgets start-->
             <div id="card-widgets">
               <div class="row">
@@ -377,24 +386,39 @@ foreach ($projects as $project) {
                     </li>
                   </ul>
                 </div>
+                <?php 
+                $conn = dbConnect();
+                $result = $conn->query("SELECT * FROM `users` WHERE `users`.`userID` = '".$_SESSION['userID']."' ;");
+        
+                while($row = mysqli_fetch_assoc($result)) {
+                  $userEmail = $row['userEmail'];
+                  $userName = $row['userName'];
+
+                  }
+                        /* close connection */
+                        $conn->close();                
+                ?>
+                
                 <div class="col s12 m4 l4">
                   <div id="profile-card" class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
+                  <p>User gegevens</p>
+                    <!--<div class="card-image waves-effect waves-block waves-light">
                       <img class="activator" src="../../images/gallary/3.png" alt="user bg">
-                    </div>
+                    </div>-->
                     <div class="card-content">
-                      <img src="../../images/avatar/avatar-7.png" alt="" class="circle responsive-img activator card-profile-image cyan lighten-1 padding-2">
+                     <!-- <img src="../../images/avatar/avatar-7.png" alt="" class="circle responsive-img activator card-profile-image cyan lighten-1 padding-2">
                       <a class="btn-floating activator btn-move-up waves-effect waves-light red accent-2 z-depth-4 right">
                         <i class="material-icons">edit</i>
-                      </a>
-                      <span class="card-title activator grey-text text-darken-4">Roger Waters</span>
-                      <p>
+                      </a>-->
+                      <span class="card-title activator grey-text text-darken-4"><?php echo $userName ?></span>
+                      <!--<p>
                         <i class="material-icons">perm_identity</i> Project Manager</p>
                       <p>
                         <i class="material-icons">perm_phone_msg</i> +1 (612) 222 8989</p>
-                      <p>
-                        <i class="material-icons">email</i> yourmail@domain.com</p>
+                      <p>-->
+                        <i class="material-icons">email</i> <?php echo $userEmail  ?></p>
                     </div>
+                    <!--
                     <div class="card-reveal">
                       <span class="card-title grey-text text-darken-4">Roger Waters
                         <i class="material-icons right">close</i>
@@ -416,16 +440,14 @@ foreach ($projects as $project) {
                       </p>
                       <p>
                       </p>
-                    </div>
+                    </div>-->
                   </div>
                 </div>
               </div>
             </div>
+            
             <!--card widgets end-->
             <!-- //////////////////////////////////////////////////////////////////////////// -->
-          <div></div></div>
-       
-           
           <!--end container-->
         </section>
         </div>
