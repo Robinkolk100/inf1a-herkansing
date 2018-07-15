@@ -17,7 +17,7 @@
     	{
     		//get projects from database
     		$conn = dbConnect();
-    		$result = $conn->query("SELECT `users`.`userID`, `users`.`userName` 
+    		$result = $conn->query("SELECT `users`.`userID`, `users`.`userName`, `userproject`.`WarningCount`
     								FROM `userproject`
                                     JOIN  `users` ON `userproject`.`userID` = `users`.`userID`
     								WHERE `projectID`='".$projectID."'
