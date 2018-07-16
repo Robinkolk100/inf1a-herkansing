@@ -6,6 +6,7 @@ include 'function_account.php';
 include 'function_document.php';
 include 'function_addProject.php';
 include 'function_addProjectMember.php';
+include 'function_addProjectDocument.php';
 include 'function_warningProjectMember.php';
 //include 'function_getProjects.php';
 include 'function_getProjectMembers.php';
@@ -298,21 +299,26 @@ if(isset($_POST['AddWarning'])){
   ?>
 
   <form action='#' name='input' method='POST'>
-    <select name="addmember" style="display: block;">
+    <select name="addDocument" style="display: block;">
     <?php 
       while ($row = mysqli_fetch_array($result))
       {
           echo "<option value=".$row['documentID'].">".$row['documentName']."</option>";
       }
-      echo "<input type='hidden' value=".$projectID." name='projectId' />";
+      echo "<input type='hidden' value=".$projectID." name='documentID' />";
       ?>        
     </select>
     <input type="date" name="Deadline">
-    <p> <input type='submit' value='toevoegen'></p>
+    <p> <input type='submit' name="addProjDoc" value='toevoegen'></p>
   </form>
                     </li>
 
                     <?php
+              if(isset($_POST['addProjDoc'])) 
+              {
+                addProjectDocument($projectID, $_POST['documentID'], $_POST['Deadline']);
+              }
+
                     $documenten = getProjectDocuments($projectID);
                     if($documenten != NULL){
                foreach ($documenten as $document) {
@@ -325,7 +331,7 @@ if(isset($_POST['AddWarning'])){
                               <input type="hidden" name="ID" value=<?php echo $document['documentID'] ?>>
                               <strong><?php echo $document['documentName']; ?></strong>
                               <input type="date" name="Deadline" value=<?php echo $document['documentDeadline']; ?>>
-                              <input type="submit" name="addProjDoc" value="toevoegen">
+                              <input type="submit"  value="toevoegen">
                             </form>
                         </div>
                       </div>
@@ -340,14 +346,6 @@ if(isset($_POST['AddWarning'])){
             <?php  
               } else {
                 echo"geen project geselect";
-              }
-
-              if(isset($_POST['addProjDoc'])) {
-                echo "<h1> hallo </h1>";
-                // echo $projectID;
-                // echo $_POST['ID'];
-                // echo $_POST['Deadline'];
-                //addProjectDocument($projectID, $_POST['ID'], $_POST['Deadline']);
               }
         ?>
             <!--card widgets start-->
