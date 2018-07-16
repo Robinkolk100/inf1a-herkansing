@@ -325,15 +325,21 @@ if(isset($_POST['AddWarning'])){
                  ?>
                     <li class="collection-item">
                       <div class="row">
-                        <div class="col s6">
                           <p class="collections-title">
                             <form action='#' name='input' method='POST'>
+                              <div class="col s5">
                               <input type="hidden" name="ID" value=<?php echo $document['documentID'] ?>>
                               <strong><?php echo $document['documentName']; ?></strong>
-                              <input type="date" name="Deadline" value=<?php echo $document['documentDeadline']; ?>>
-                              <input type="submit"  value="toevoegen">
+                            </div>
+                              
+                        <div class="col s4">
+                          <strong>Deadline: </strong>
+                          <input type="date" name="Deadline" value=<?php echo $document['documentDeadline']; ?>></div>
+                            <div class="col s3">
+                              <input type="submit" class="waves-effect waves-light red btn" value="toevoegen">
+                              <input type="submit" class="waves-effect waves-light red btn" value="ingeleverd">
+                            </div>
                             </form>
-                        </div>
                       </div>
                     </li>
                     <?php }
