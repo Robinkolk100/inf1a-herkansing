@@ -399,18 +399,16 @@ if(isset($_POST['AddWarning'])){
                 ?> 
 
                 <div class="col s12 m4 l4">
-                  <ul id="task-card" class="collection with-header">
-                    <li class="collection-header red accent-2">
-                      <h4 class="task-card-title">Nieuw Document</h4>
+                  <ul id="projects-collection" class="collection z-depth-1">
+                    <li class="collection-item avatar">
+                      <i class="material-icons cyan circle">account_circle</i>
+                      <h6 class="collection-header m-0">Gebruiker</h6>
                     </li>
-                    <form action="#" method="post">
-                      <li style="touch-action: pan-y;">
-                        <input type="text" name="documentName" placeholder="Document naam">
-                      </li>
-                      <li style="touch-action: pan-y;">
-                        <input class="waves-effect waves-red btn" type="submit" name="NewDocument" value="Aanmaken" style="width: 100%;"><br>
-                      </li>
-                    </form>
+                    <li class="collection-item">
+                      <div class="row">';
+                        <div class="col s5">';
+                          <p class="collections-title"><? echo $userName;?></p>';
+                    </li>
                   </ul>
                 </div>
 
