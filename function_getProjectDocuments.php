@@ -32,7 +32,7 @@
             $conn->close();
             array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er zijn nog geen documenten aangemaakt.</span></h3>");
             //echo "Error: " . $sql . "<br>" . $conn->error;
-            return $errorArray;
+            return NULL;
         }
     }
 

@@ -286,6 +286,7 @@ if(isset($_POST['AddWarning'])){
                     </li>
                     <?php
                     $projectdocumenten = getProjectDocuments($projectID);
+                    if($projectdocumenten != NULL){
                foreach ($projectdocumenten as $document) {
                  ?>
                     <li class="collection-item">
@@ -301,7 +302,8 @@ if(isset($_POST['AddWarning'])){
                         </div>
                       </div>
                     </li>
-                    <?php }?>
+                    <?php }
+                    } else{ echo "geen documenten"; }?>
                   </ul>
                 </div>
               </div>
