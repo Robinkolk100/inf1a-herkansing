@@ -30,7 +30,7 @@ include 'function_getProjectsYearFour.php';
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="home.php" class="brand-logo">SmartProject</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="Index.php">Uitloggen</a></li>
+        <li><a href="home.php?logout=1">Uitloggen</a></li>
       </ul>
     </div>
   </nav>
@@ -136,6 +136,7 @@ foreach ($projects as $project) {
         <?php 
         if(isset($_GET['project'])){
           echo"laat project gegevens zien";
+          $projectID = $_GET['project'];
 ?>  
         <div class="container">
             <!--card stats start-->
@@ -216,6 +217,29 @@ foreach ($projects as $project) {
                     <li class="collection-item avatar">
                       <i class="material-icons cyan circle">account_circle</i>
                       <h6 class="collection-header m-0">Project leden</h6>
+                      <?php
+                      $query = "SELECT * FROM `users`ORDER BY `users`.`UserID` ASC ";
+                      $conn = dbConnect();
+			  //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
+    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
+	
+	?><form action='#' name='input' method='GET'>
+<select name="addmember" style="display: block;">
+<?php 
+while ($row = mysqli_fetch_array($result))
+{
+    echo "<option value=".$row['userID'].">".$row['userEmail']."</option>";
+}
+echo "<input type='hidden' value=".$projectID." name='projectId' />";
+?>        
+</select>
+<p>nieuw lit toevoegen <input type='submit' value='add lit'></p>
+</form>
+<?php if(isset($_GET['addmember'])){
+  addProjectMember($_GET['addmember'], $projectID);
+  header('Location: home.php?project='.$projectID);
+}else{}
+?>
                       <p>alle project leden met waarschuwingen</p>
                     </li>
                     <?php 
@@ -451,7 +475,14 @@ echo '</li>';
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-      
+
+  <!-- < if(isset($_GET['logout'] )){
+    Logout();
+    header('Location: index.php');
+    
+    }else{}
+    Print_r($_GET['logout']);
+    ?> -->
     </div>
   </body>
 </html>
