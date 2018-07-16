@@ -48,11 +48,5 @@ function Inlog($student_ID, $student_wachtwoord)
     return $message;
 }
 
-function Logout()
-{
-    // Stopping session to logout the user
-    session_unset();
-    session_destroy();
-    return "<span class='card-title lime-text text-accent-4'><h3>U bent uit gelogt</h3></span>";
-}
+
 ?>

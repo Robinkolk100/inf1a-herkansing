@@ -57,16 +57,23 @@ include 'function_account.php';
             </div>
             <?php 
             if (isset($_POST["submitinlog"])) {
+               
                 $userID = $_POST["userID"];
                 $password = $_POST["password"];
+                if(!empty($userID) && (!empty($password))){
 
                 $inlog = Inlog($userID, $password);
+                
                 foreach ($inlog as $value) {
                     echo $value . "<br>";
                 }
-                if($_SESSION["login"] == 1){
+                if($_SESSION["login"] === 1){
                     header('Location: home.php');
                 }
+                
+            }else{
+                echo "Er is geen studentnummer en/of wachtwoord ingevoerd.";
+            }
             }
             ?>
         </div>
@@ -105,11 +112,16 @@ include 'function_account.php';
                 $signUpUserID = $_POST["signUpUserID"];
                 $signUpEmail = $_POST["signUpEmail"];
                 $signUpPass = $_POST["signUpPass"];
+                
+                if(!empty($signUpUserID) && (!empty($signUpEmail) && (!empty($signUp)))){
 
                 $account = NewAccountUser($signUpUserID, $signUpEmail, $signUpPass);
                 foreach ($account as $value) {
                     echo $value . "<br>";
                 }
+            }else{
+                echo "Er is geen Studentnummer, e-mailadres en/of wachtwoord ingevoerd.";
+            }
             }
             ?>
         </div>
