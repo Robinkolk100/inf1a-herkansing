@@ -1,5 +1,10 @@
 <?php 
 session_start();
+if($_SESSION["login"] !== 1){
+    header('Location:signInSignUp.php');
+}
+    
+
 include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
@@ -537,4 +542,5 @@ if(isset($_POST['AddWarning'])){
     </div>
   </body>
 </html>
+
 
