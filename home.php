@@ -16,6 +16,7 @@ include 'function_getProjectsYearTree.php';
 include 'function_getProjectsYearFour.php';
 include 'function_getProjectDocuments.php';
 include 'function_getDocuments.php';
+include 'function_getAdvice.php';
 //print_r($_SESSION)
 ?>
 <!DOCTYPE html>
@@ -321,6 +322,28 @@ if(isset($_POST['AddWarning'])){
                         <div class="col s6">
                           <p class="collections-title">
                             <strong>#<?php echo $document['documentID']; ?></strong><?php echo" ".$document['documentName']; ?></p>
+                            <a class="waves-effect waves-light btn modal-trigger" href="#modal<?php echo $document['documentID']; ?>">Modal</a>
+                            <!-- Modal Structure -->
+<div id="modal<?php echo $document['documentID']; ?>" class="modal">
+  <div class="modal-content">
+  <?php 
+     $Advices = getAdvice($document['documentID']);
+     if($Advices != NULL){
+     foreach ($Advices as $Advice) {
+       
+       
+     ?>
+    <h4><?php echo $Advice['adviceType'];  ?></h4>
+    <p><?php echo $Advice['adviceTekst']; ?></p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+<?php  }; 
+}else{ echo "geen advies gegeven"; }
+?>
+
                         </div>
                       </div>
                     </li>
@@ -455,7 +478,22 @@ if(isset($_POST['AddWarning'])){
     </div>
     <div class="footer-copyright">
       <div class="container">
-    
+
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+
+    </script>
+
       </div>
     </div>
   </footer>
