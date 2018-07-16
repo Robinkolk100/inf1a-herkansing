@@ -1,6 +1,6 @@
 <?php
 
-	function getProjects($userID)
+	function getProjectsYearFour($userID)
 	{
 		$count = 0;
 		$errorCount = 0;
@@ -20,7 +20,8 @@
     		$result = $conn->query("SELECT `projectPeriode`, `projectGroup`, `projectYear`, `projectName`, `projects`.`projectID` 
     														FROM `projects` 
     														JOIN `userproject` ON `projects`.`projectID` = `userproject`.`projectID`
-                                WHERE `userID`='".$userID."'
+                                WHERE `userID`='".$userID."' 
+                                AND `projectYear` = '4'
                                 ORDER BY `projectYear`, `projectPeriode` ASC;");
 
             // Check if there are results

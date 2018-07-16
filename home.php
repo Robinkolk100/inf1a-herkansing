@@ -48,7 +48,7 @@ include 'function_getUsers.php';
                     <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
-if(!empty($project)){
+if(!empty($projects)){
 foreach ($projects as $project) {
                           if ($project['projectYear'] == 1) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
@@ -92,14 +92,14 @@ foreach ($projects as $project) {
                   </a>
                   <div class="collapsible-body"style="display:block;">
                   <ul>
-<?php 
-$projects = getProjects($_SESSION['userID']);
-if(!empty($project)){
-foreach ($projects as $project) {
-                          if ($project['projectYear'] == 3) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                          else{}
+                    <?php 
+                      $projects = getProjects($_SESSION['userID']);
+                        if(!empty($projects)){
+                          foreach ($projects as $project) {
+                            if ($project['projectYear'] == 3) {
+                              ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
+                            }
+                            else{}
                           }
                         }
                       else{
