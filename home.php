@@ -15,6 +15,7 @@ include 'function_getProjectsYearTwo.php';
 include 'function_getProjectsYearTree.php';
 include 'function_getProjectsYearFour.php';
 include 'function_getProjectDocuments.php';
+include 'function_getDocuments.php';
 //print_r($_SESSION)
 ?>
 <!DOCTYPE html>
@@ -303,6 +304,32 @@ if(isset($_POST['AddWarning'])){
                           <p class="collections-title">
                             <strong>deadline <?php echo $document['documentDeadline']; ?></p>
                           <p class="collections-content">Upload <?php echo $document['documentUpload']; ?></p>
+                        </div>
+                      </div>
+                    </li>
+                    <?php }
+                    } else{ echo "geen documenten"; }?>
+                  </ul>
+                </div>
+
+
+                <div class="col s12 m12 l6">
+                  <ul id="issues-collection" class="collection z-depth-1">
+                    <li class="collection-item avatar">
+                      <i class="material-icons red accent-2 circle">library_books</i>
+                      <h6 class="collection-header m-0">documents</h6>
+                      <p>Alle documents</p>
+                    </li>
+                    <?php
+                    $documenten = getDocuments();
+                    if($documenten != NULL){
+               foreach ($documenten as $document) {
+                 ?>
+                    <li class="collection-item">
+                      <div class="row">
+                        <div class="col s6">
+                          <p class="collections-title">
+                            <strong>#<?php echo $document['documentID']; ?></strong><?php echo" ".$document['documentName']; ?></p>
                         </div>
                       </div>
                     </li>
