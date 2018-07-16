@@ -160,32 +160,42 @@ foreach ($projects as $project) {
                 <div class="col s12 m6 l3">
                   <div class="card">
                     <div class="card-content cyan white-text">
-                      <p class="card-stats-title">
-                        <i class="material-icons">person_outline</i> New Clients</p>
-                      <h4 class="card-stats-number">566</h4>
-                      <p class="card-stats-compare">
-                        <i class="material-icons">keyboard_arrow_up</i> 15%
-                        <span class="cyan text text-lighten-5">from yesterday</span>
-                      </p>
-                    </div>
-                    <div class="card-action cyan darken-1">
-                      <div id="clients-bar" class="center-align"><canvas style="display: inline-block; width: 227px; height: 25px; vertical-align: top;" width="227" height="25"></canvas></div>
+                      <p class="card-stats-title center">
+                        <i class="material-icons center">person_outline</i> Aantal project leden </p>
+                        <?php
+                      $query = "SELECT COUNT(`users`.`userID`) AS aantalUsers
+                      FROM `userproject`
+                      JOIN  `users` ON `userproject`.`userID` = `users`.`userID`
+                      WHERE `projectID`= ".$_GET['project']." ";
+                      $conn = dbConnect();
+			  //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
+    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
+      while ($row = mysqli_fetch_array($result))
+      {
+          echo "<h4 class='card-stats-number center'>".$row['aantalUsers']."</h4>";
+      }
+      ?>  
                     </div>
                   </div>
                 </div>
                 <div class="col s12 m6 l3">
                   <div class="card">
                     <div class="card-content red accent-2 white-text">
-                      <p class="card-stats-title">
-                        <i class="material-icons">attach_money</i>Total Sales</p>
-                      <h4 class="card-stats-number">$8990.63</h4>
-                      <p class="card-stats-compare">
-                        <i class="material-icons">keyboard_arrow_up</i> 70%
-                        <span class="red-text text-lighten-5">last month</span>
-                      </p>
-                    </div>
-                    <div class="card-action red darken-1">
-                      <div id="sales-compositebar" class="center-align"><canvas style="display: inline-block; width: 227px; height: 25px; vertical-align: top;" width="227" height="25"></canvas></div>
+                      <p class="card-stats-title center">
+                        <i class="material-icons center">attach_money</i>Totaal aantal waarschuwingen</p>
+                        <?php
+                      $query = "SELECT SUM(`userproject`.`WarningCount`)   AS WarningCount
+                      FROM `userproject`
+                      JOIN  `users` ON `userproject`.`userID` = `users`.`userID`
+                      WHERE `projectID`= ".$_GET['project']." ";
+                      $conn = dbConnect();
+			  //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
+    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
+      while ($row = mysqli_fetch_array($result))
+      {
+          echo "<h4 class='card-stats-number center'>".$row['WarningCount']."</h4>";
+      }
+      ?>  
                     </div>
                   </div>
                 </div>
