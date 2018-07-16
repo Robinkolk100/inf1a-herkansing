@@ -368,7 +368,7 @@ if(isset($_POST['AddWarning'])){
                         <input type="text" name="documentName" placeholder="Document naam">
                       </li>
                       <li style="touch-action: pan-y;">
-                        <input class="waves-effect waves-red btn" type="submit" name="NewDocument" value="Aanmaken" style="width: 100%;"><br>
+                        <input class="waves-effect waves-red red btn" type="submit" name="NewDocument" value="Aanmaken" style="width: 100%;"><br>
                       </li>
                     </form>
                   </ul>
@@ -385,6 +385,8 @@ if(isset($_POST['AddWarning'])){
                   } 
                 ?>
 
+
+
                 <?php 
                 $User =getUsers($_SESSION['userID']);
 
@@ -395,6 +397,24 @@ if(isset($_POST['AddWarning'])){
                   }
                
                 ?> 
+
+                <div class="col s12 m4 l4">
+                  <ul id="task-card" class="collection with-header">
+                    <li class="collection-header red accent-2">
+                      <h4 class="task-card-title">Nieuw Document</h4>
+                    </li>
+                    <form action="#" method="post">
+                      <li style="touch-action: pan-y;">
+                        <input type="text" name="documentName" placeholder="Document naam">
+                      </li>
+                      <li style="touch-action: pan-y;">
+                        <input class="waves-effect waves-red btn" type="submit" name="NewDocument" value="Aanmaken" style="width: 100%;"><br>
+                      </li>
+                    </form>
+                  </ul>
+                </div>
+
+
                 <div class="col s12 m4 l4">
                   <div id="profile-card" class="card">
                   <p>User gegevens</p>
