@@ -1,9 +1,9 @@
 <?php 
 session_start();
-if($_SESSION["login"] !== 1){
-    header('Location:signInSignUp.php');
+if ($_SESSION["login"] !== 1) {
+  header('Location:signInSignUp.php');
 }
-    
+
 
 include 'db_connect.php';
 include 'function_login.php';
@@ -67,14 +67,15 @@ include 'function_getAdvice.php';
                     <ul>
 <?php 
 $projects = getProjectsYearOne($_SESSION['userID']);
-if(!empty($projects)){
-foreach ($projects as $project) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                    }
-                  } else{
-                    echo "geen project voor dit jaar";
-                  }
-                    ?>
+if (!empty($projects)) {
+  foreach ($projects as $project) {
+    ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF" . $project['projectYear'] . "" . $project['projectGroup'] . " " . $project['projectPeriode'] . " " . $project['projectName'] . "" ?></a></li><?php
+
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      echo "geen project voor dit jaar";
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                    ?>
                     </ul>
                   </div>
                 </li>
@@ -87,15 +88,15 @@ foreach ($projects as $project) {
                   <ul>
 <?php 
 $projects = getProjectsYearTwo($_SESSION['userID']);
-if(!empty($projects)){
-foreach ($projects as $project) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                        }
-                      else{
-                          echo "geen project voor dit jaar";
-                        }
-                    ?>
+if (!empty($projects)) {
+  foreach ($projects as $project) {
+    ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF" . $project['projectYear'] . "" . $project['projectGroup'] . " " . $project['projectPeriode'] . " " . $project['projectName'] . "" ?></a></li><?php
+
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      echo "geen project voor dit jaar";
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                    ?>
                     </ul>
                   </div>
                 </li>
@@ -108,15 +109,15 @@ foreach ($projects as $project) {
                   <ul>
 <?php 
 $projects = getProjectsYearTree($_SESSION['userID']);
-if(!empty($projects)){
-foreach ($projects as $project) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                        }
-                      else{
-                          echo "geen project voor dit jaar";
-                        }
-                    ?>
+if (!empty($projects)) {
+  foreach ($projects as $project) {
+    ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF" . $project['projectYear'] . "" . $project['projectGroup'] . " " . $project['projectPeriode'] . " " . $project['projectName'] . "" ?></a></li><?php
+
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      echo "geen project voor dit jaar";
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                    ?>
                     </ul>
                   </div>
                 </li>
@@ -129,15 +130,15 @@ foreach ($projects as $project) {
                   <ul>
 <?php 
 $projects = getProjectsYearFour($_SESSION['userID']);
-if(!empty($projects)){
-foreach ($projects as $project) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                        }
-                      else{
-                          echo "geen project voor dit jaar";
-                        }
-                    ?>
+if (!empty($projects)) {
+  foreach ($projects as $project) {
+    ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF" . $project['projectYear'] . "" . $project['projectGroup'] . " " . $project['projectPeriode'] . " " . $project['projectName'] . "" ?></a></li><?php
+
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      echo "geen project voor dit jaar";
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                    ?>
                     </ul>
                   </div>
                 </li>
@@ -149,10 +150,10 @@ foreach ($projects as $project) {
         <!-- //////////////////////////////////////////////////////////////////////////// -->
         <!--START CONTENT-->     
         <?php 
-        if(isset($_GET['project'])){
-          echo"laat project gegevens zien";
+        if (isset($_GET['project'])) {
+          echo "laat project gegevens zien";
           $projectID = $_GET['project'];
-        ?>  
+          ?>  
         <div class="container">
             <!--card stats start-->
             <div id="card-stats">
@@ -163,18 +164,17 @@ foreach ($projects as $project) {
                       <p class="card-stats-title center">
                         <i class="material-icons center">person_outline</i> Aantal project leden </p>
                         <?php
-                      $query = "SELECT COUNT(`users`.`userID`) AS aantalUsers
+                        $query = "SELECT COUNT(`users`.`userID`) AS aantalUsers
                       FROM `userproject`
                       JOIN  `users` ON `userproject`.`userID` = `users`.`userID`
-                      WHERE `projectID`= ".$_GET['project']." ";
-                      $conn = dbConnect();
+                      WHERE `projectID`= " . $_GET['project'] . " ";
+                        $conn = dbConnect();
 			  //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
-    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
-      while ($row = mysqli_fetch_array($result))
-      {
-          echo "<h4 class='card-stats-number center'>".$row['aantalUsers']."</h4>";
-      }
-      ?>  
+                        $result = @mysqli_query($conn, $query) or die(mysqli_error());
+                        while ($row = mysqli_fetch_array($result)) {
+                          echo "<h4 class='card-stats-number center'>" . $row['aantalUsers'] . "</h4>";
+                        }
+                        ?>  
                     </div>
                   </div>
                 </div>
@@ -184,18 +184,17 @@ foreach ($projects as $project) {
                       <p class="card-stats-title center">
                         <i class="material-icons center">attach_money</i>Totaal aantal waarschuwingen</p>
                         <?php
-                      $query = "SELECT SUM(`userproject`.`WarningCount`)   AS WarningCount
+                        $query = "SELECT SUM(`userproject`.`WarningCount`)   AS WarningCount
                       FROM `userproject`
                       JOIN  `users` ON `userproject`.`userID` = `users`.`userID`
-                      WHERE `projectID`= ".$_GET['project']." ";
-                      $conn = dbConnect();
+                      WHERE `projectID`= " . $_GET['project'] . " ";
+                        $conn = dbConnect();
 			  //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
-    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
-      while ($row = mysqli_fetch_array($result))
-      {
-          echo "<h4 class='card-stats-number center'>".$row['WarningCount']."</h4>";
-      }
-      ?>  
+                        $result = @mysqli_query($conn, $query) or die(mysqli_error());
+                        while ($row = mysqli_fetch_array($result)) {
+                          echo "<h4 class='card-stats-number center'>" . $row['WarningCount'] . "</h4>";
+                        }
+                        ?>  
                     </div>
                   </div>
                 </div>
@@ -246,55 +245,55 @@ foreach ($projects as $project) {
                       $query = "SELECT * FROM `users`ORDER BY `users`.`UserID` ASC ";
                       $conn = dbConnect();
 			  //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
-    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
-	
+                      $result = @mysqli_query($conn, $query) or die(mysqli_error());
 
-	?>
+
+                      ?>
 
   <form action='#' name='input' method='POST'>
     <select name="addmember" style="display: block;">
     <?php 
-      while ($row = mysqli_fetch_array($result))
-      {
-          echo "<option value=".$row['userID'].">".$row['userEmail']."</option>";
-      }
-      echo "<input type='hidden' value=".$projectID." name='projectId' />";
-      ?>        
+    while ($row = mysqli_fetch_array($result)) {
+      echo "<option value=" . $row['userID'] . ">" . $row['userEmail'] . "</option>";
+    }
+    echo "<input type='hidden' value=" . $projectID . " name='projectId' />";
+    ?>        
     </select>
     <p>nieuw lid toevoegen <input type='submit' value='add lid'></p>
   </form>
 <?php 
-  if(isset($_POST['addmember'])){
-     addProjectMember($_POST['addmember'], $_GET['project']);
-  }else{}
+if (isset($_POST['addmember'])) {
+  addProjectMember($_POST['addmember'], $_GET['project']);
+} else {
+}
 ?>
                     </li>
                     <?php 
-$allProjectMembers = getProjectMembers($_GET['project']);
-foreach ($allProjectMembers as $Members) {
+                    $allProjectMembers = getProjectMembers($_GET['project']);
+                    foreach ($allProjectMembers as $Members) {
 
-echo '<li class="collection-item">';
-echo '<div class="row">';
-echo '<div class="col s5">';
-echo '<p class="collections-title">Naam: '.$Members["userName"].'</p>';
-echo '</div>';
-echo '<div class="col s4">';
-echo '<p class="collections-title">waarschuwingen : '.$Members["WarningCount"].'</p>';
-echo '</div>';
-echo '<div class="col s3">';
-echo "<form action=\"#\" method=\"post\">";
-echo "<input type=\"hidden\" name=\"ID\" value='".$Members["userID"]."'>";
-echo "<input type=\"submit\" class=\"waves-effect waves-light red btn\" name=\"AddWarning\" value=\"Add\">";
-echo "</form>";
-echo '</div>';
-echo '</div>';
-echo '</li>';
-}
+                      echo '<li class="collection-item">';
+                      echo '<div class="row">';
+                      echo '<div class="col s5">';
+                      echo '<p class="collections-title">Naam: ' . $Members["userName"] . '</p>';
+                      echo '</div>';
+                      echo '<div class="col s4">';
+                      echo '<p class="collections-title">waarschuwingen : ' . $Members["WarningCount"] . '</p>';
+                      echo '</div>';
+                      echo '<div class="col s3">';
+                      echo "<form action=\"#\" method=\"post\">";
+                      echo "<input type=\"hidden\" name=\"ID\" value='" . $Members["userID"] . "'>";
+                      echo "<input type=\"submit\" class=\"waves-effect waves-light red btn\" name=\"AddWarning\" value=\"Add\">";
+                      echo "</form>";
+                      echo '</div>';
+                      echo '</div>';
+                      echo '</li>';
+                    }
 
-if(isset($_POST['AddWarning'])){
-  warningProjectMember($_POST['ID'], $_GET['project']);
-}
-?>
+                    if (isset($_POST['AddWarning'])) {
+                      warningProjectMember($_POST['ID'], $_GET['project']);
+                    }
+                    ?>
 
                   </ul>
                 </div>
@@ -309,19 +308,18 @@ if(isset($_POST['AddWarning'])){
                       $query = "SELECT * FROM `documents`ORDER BY `documents`.`documentID` ASC ";
                       $conn = dbConnect();
         //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
-    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
-  
+                      $result = @mysqli_query($conn, $query) or die(mysqli_error());
 
-  ?>
+
+                      ?>
 
   <form action='#' name='input' method='POST'>
     <select name="addDocument" style="display: block;">
     <?php 
-      while ($row = mysqli_fetch_array($result))
-      {
-          echo "<option value=".$row['documentID'].">".$row['documentName']."</option>";
-      }
-      ?>        
+    while ($row = mysqli_fetch_array($result)) {
+      echo "<option value=" . $row['documentID'] . ">" . $row['documentName'] . "</option>";
+    }
+    ?>        
     </select>
     <input type="date" name="Deadline">
     <p> <input type='submit' name="addProjDoc" value='toevoegen'></p>
@@ -329,16 +327,15 @@ if(isset($_POST['AddWarning'])){
                     </li>
 
                     <?php
-              if(isset($_POST['addProjDoc'])) 
-              {
-                echo $_POST['addDocument'];
-                addProjectDocument($projectID, $_POST['addDocument'], $_POST['Deadline']);
-              }
+                    if (isset($_POST['addProjDoc'])) {
+                      echo $_POST['addDocument'];
+                      addProjectDocument($projectID, $_POST['addDocument'], $_POST['Deadline']);
+                    }
 
                     $documenten = getProjectDocuments($projectID);
-                    if($documenten != NULL){
-               foreach ($documenten as $document) {
-                 ?>
+                    if ($documenten != null) {
+                      foreach ($documenten as $document) {
+                        ?>
                     <li class="collection-item">
                       <div class="row">
                           <p class="collections-title">
@@ -359,20 +356,45 @@ if(isset($_POST['AddWarning'])){
                           <input type="submit" class="waves-effect waves-light red btn" value="Inleveren ">
                         </div>
                           </form>
+                          <div id="modal<?php echo $document['documentID']; ?>" class="modal">
+  <div class="modal-content">
+  <?php 
+  $Advices = getAdvice($document['documentID']);
+  if ($Advices != null) {
+    foreach ($Advices as $Advice) {
+
+
+      ?>
+    <h4><?php echo $Advice['adviceType']; ?></h4>
+    <p><?php echo $Advice['adviceTekst']; ?></p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+<?php 
+};
+} else {
+  echo "geen advies gegeven";
+}
+?>
                       </div>
                     </li>
-                    <?php }
-                    } else{ echo "geen documenten"; }?>
+                    <?php 
+                  }
+                } else {
+                  echo "geen documenten";
+                } ?>
                   </ul>
                 </div>
               </div>
             </div>
             <!--work collections end-->
-            <?php  
-              } else {
-                echo"geen project geselect";
-              }
-        ?>
+            <?php 
+          } else {
+            echo "geen project geselect";
+          }
+          ?>
             <!--card widgets start-->
             <div id="card-widgets">
               <div class="row">
@@ -401,17 +423,17 @@ if(isset($_POST['AddWarning'])){
                   </ul>
                 </div>
                 <?php 
-                  if (isset($_POST["NewProject"])) {
-                    $projectGroup = $_POST["projectGroup"];
-                    $projectPeriod = $_POST["projectPeriod"];
-                    $projectYear = $_POST["projectYear"];
-                    $projectName = $_POST["projectName"];
+                if (isset($_POST["NewProject"])) {
+                  $projectGroup = $_POST["projectGroup"];
+                  $projectPeriod = $_POST["projectPeriod"];
+                  $projectYear = $_POST["projectYear"];
+                  $projectName = $_POST["projectName"];
 
-                    $test = addProject($projectGroup, $projectPeriod, $projectYear, $projectName);
-                    foreach ($test as $value) {
-                      echo "$value <br>";
-                    }
-                  } 
+                  $test = addProject($projectGroup, $projectPeriod, $projectYear, $projectName);
+                  foreach ($test as $value) {
+                    echo "$value <br>";
+                  }
+                }
                 ?>
 
                 <div class="col s12 m4 l4">
@@ -430,28 +452,27 @@ if(isset($_POST['AddWarning'])){
                   </ul>
                 </div>
                 <?php 
-                  if (isset($_POST["NewDocument"])) {
-                    $documentName = $_POST["documentName"];
+                if (isset($_POST["NewDocument"])) {
+                  $documentName = $_POST["documentName"];
 
-                    $test = newDocument($documentName);
-                    if($test == NULL)
-                    {
-                      echo "Bestaat al";
-                    }
-                  } 
+                  $test = newDocument($documentName);
+                  if ($test == null) {
+                    echo "Bestaat al";
+                  }
+                }
                 ?>
 
 
 
                 <?php 
-                $User =getUsers($_SESSION['userID']);
+                $User = getUsers($_SESSION['userID']);
 
-                while($row = mysqli_fetch_assoc($User)) {
+                while ($row = mysqli_fetch_assoc($User)) {
                   $userEmail = $row['userEmail'];
                   $userName = $row['userName'];
 
-                  }
-               
+                }
+
                 ?> 
 
                 <div class="col s12 m4 l4">
@@ -462,12 +483,12 @@ if(isset($_POST['AddWarning'])){
                     </li>
                     <li class="collection-item">
                       <div class="row">
-                        <p class="collections-title"> Naam: <?php echo $userName;?></p>
+                        <p class="collections-title"> Naam: <?php echo $userName; ?></p>
                       </div>
                     </li>
                     <li class="collection-item">
                       <div class="row">
-                        <p class="collections-title"> Email: <?php echo $userEmail;?></p>
+                        <p class="collections-title"> Email: <?php echo $userEmail; ?></p>
                       </div>
                     </li>
                   </ul>
