@@ -141,12 +141,8 @@ foreach ($projects as $project) {
         <?php 
         if(isset($_GET['project'])){
           echo"laat project gegevens zien";
-<<<<<<< HEAD
           $projectID = $_GET['project'];
-?>  
-=======
         ?>  
->>>>>>> Menu-Change
         <div class="container">
             <!--card stats start-->
             <div id="card-stats">
