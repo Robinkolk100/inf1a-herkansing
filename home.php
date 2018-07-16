@@ -5,6 +5,7 @@ include 'function_login.php';
 include 'function_account.php';
 include 'function_addProject.php';
 include 'function_addProjectMember.php';
+include 'function_warningProjectMember.php';
 //include 'function_getProjects.php';
 include 'function_getProjectMembers.php';
 include 'function_getUsers.php';
@@ -140,7 +141,7 @@ foreach ($projects as $project) {
         <?php 
         if(isset($_GET['project'])){
           echo"laat project gegevens zien";
-?>  
+        ?>  
         <div class="container">
             <!--card stats start-->
             <div id="card-stats">
@@ -228,15 +229,27 @@ foreach ($allProjectMembers as $Members) {
 
 echo '<li class="collection-item">';
 echo '<div class="row">';
-echo '<div class="col s6">';
-echo '<p class="collections-title">Naam: '.$Members["userName"];'</p>';
+echo '<div class="col s5">';
+echo '<p class="collections-title">Naam: '.$Members["userName"].'</p>';
 echo '</div>';
-echo '<div class="col s6">';
-echo '<p class="collections-title">waarschuwingen : '.$Members["WarningCount"];'</p>';
+echo '<div class="col s4">';
+echo '<p class="collections-title">waarschuwingen : '.$Members["WarningCount"].'</p>';
+echo '</div>';
+echo '<div class="col s3">';
+echo "<form action=\"#\" method=\"post\">";
+echo "<input type=\"hidden\" name=\"ID\" value='".$Members["userID"]."'>";
+echo "<input type=\"submit\" class=\"waves-effect waves-light btn\" name=\"AddWarning\" value=\"Add\">";
+echo "</form>";
 echo '</div>';
 echo '</div>';
 echo '</li>';
-}?>
+}
+
+if(isset($_POST['AddWarning'])){
+  warningProjectMember($_POST['ID'], $_GET['project']);
+}
+?>
+
                     
 
 
@@ -246,8 +259,8 @@ echo '</li>';
                 <div class="col s12 m12 l6">
                   <ul id="issues-collection" class="collection z-depth-1">
                     <li class="collection-item avatar">
-                      <i class="material-icons red accent-2 circle">bug_report</i>
-                      <h6 class="collection-header m-0">Issues</h6>
+                      <i class="material-icons red accent-2 circle">library_books</i>
+                      <h6 class="collection-header m-0">Project document(en)</h6>
                       <p>Assigned to you</p>
                     </li>
                     <li class="collection-item">
