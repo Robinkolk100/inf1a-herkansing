@@ -221,8 +221,8 @@ foreach ($projects as $project) {
               <div class="row">
                 <div class="col s12 m12 l6">
                   <ul id="projects-collection" class="collection z-depth-1">
-                    <li class="collection-item avatar">
-                      <i class="material-icons cyan circle">account_circle</i>
+                    <li class="collection-item cyan avatar">
+                      <i class="material-icons cyan circle">person_outline</i>
                       <h6 class="collection-header m-0">Project leden</h6>
                       <?php
                       $query = "SELECT * FROM `users`ORDER BY `users`.`UserID` ASC ";
@@ -267,7 +267,7 @@ echo '</div>';
 echo '<div class="col s3">';
 echo "<form action=\"#\" method=\"post\">";
 echo "<input type=\"hidden\" name=\"ID\" value='".$Members["userID"]."'>";
-echo "<input type=\"submit\" class=\"waves-effect waves-light btn\" name=\"AddWarning\" value=\"Add\">";
+echo "<input type=\"submit\" class=\"waves-effect waves-light red btn\" name=\"AddWarning\" value=\"Add\">";
 echo "</form>";
 echo '</div>';
 echo '</div>';
@@ -283,7 +283,7 @@ if(isset($_POST['AddWarning'])){
                 </div>
                 <div class="col s12 m12 l6">
                   <ul id="issues-collection" class="collection z-depth-1">
-                    <li class="collection-item avatar">
+                    <li class="collection-item red accent-2 avatar">
                       <i class="material-icons red accent-2 circle">library_books</i>
                       <h6 class="collection-header m-0">Project document(en) <?php echo $projectID ?>  </h6>
                       <p>Assigned to you</p>
@@ -405,57 +405,16 @@ if(isset($_POST['AddWarning'])){
                       <h6 class="collection-header m-0">Gebruiker</h6>
                     </li>
                     <li class="collection-item">
-                      <div class="row">';
-                        <div class="col s5">';
-                          <p class="collections-title"><? echo $userName;?></p>';
+                      <div class="row">
+                        <p class="collections-title"> Naam: <?php echo $userName;?></p>
+                      </div>
+                    </li>
+                    <li class="collection-item">
+                      <div class="row">
+                        <p class="collections-title"> Email: <?php echo $userEmail;?></p>
+                      </div>
                     </li>
                   </ul>
-                </div>
-
-
-                <div class="col s12 m4 l4">
-                  <div id="profile-card" class="card">
-                  <p>User gegevens</p>
-                    <!--<div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="../../images/gallary/3.png" alt="user bg">
-                    </div>-->
-                    <div class="card-content">
-                     <!-- <img src="../../images/avatar/avatar-7.png" alt="" class="circle responsive-img activator card-profile-image cyan lighten-1 padding-2">
-                      <a class="btn-floating activator btn-move-up waves-effect waves-light red accent-2 z-depth-4 right">
-                        <i class="material-icons">edit</i>
-                      </a>-->
-                      <span class="card-title activator grey-text text-darken-4"><?php echo $userName ?></span>
-                      <!--<p>
-                        <i class="material-icons">perm_identity</i> Project Manager</p>
-                      <p>
-                        <i class="material-icons">perm_phone_msg</i> +1 (612) 222 8989</p>
-                      <p>-->
-                        <i class="material-icons">email</i> <?php echo $userEmail  ?></p>
-                    </div>
-                    <!--
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Roger Waters
-                        <i class="material-icons right">close</i>
-                      </span>
-                      <p>Here is some more information about this card.</p>
-                      <p>
-                        <i class="material-icons">perm_identity</i> Project Manager</p>
-                      <p>
-                        <i class="material-icons">perm_phone_msg</i> +1 (612) 222 8989</p>
-                      <p>
-                        <i class="material-icons">email</i> yourmail@domain.com</p>
-                      <p>
-                        <i class="material-icons">cake</i> 18th June 1990
-                      </p>
-                      <p>
-                      </p>
-                      <p>
-                        <i class="material-icons">airplanemode_active</i> BAR - AUS
-                      </p>
-                      <p>
-                      </p>
-                    </div>-->
-                  </div>
                 </div>
               </div>
             </div>
