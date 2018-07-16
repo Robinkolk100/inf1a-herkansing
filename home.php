@@ -75,10 +75,11 @@ $projects = getProjectsYearTwo($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                    }
-                  }else{
-                    echo "geen project voor dit jaar";
-                  }
+                          }
+                        }
+                      else{
+                          echo "geen project voor dit jaar";
+                        }
                     ?>
                     </ul>
                   </div>
