@@ -400,8 +400,8 @@ if(isset($_POST['AddWarning'])){
 
                 <div class="col s12 m4 l4">
                   <ul id="projects-collection" class="collection z-depth-1">
-                    <li class="collection-item avatar">
-                      <i class="material-icons cyan circle">account_circle</i>
+                    <li class="collection-item cyan avatar">
+                      <i class="material-icons cyan circle">person_outline</i>
                       <h6 class="collection-header m-0">Gebruiker</h6>
                     </li>
                     <li class="collection-item">
