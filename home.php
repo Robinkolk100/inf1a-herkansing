@@ -321,7 +321,7 @@ if(isset($_POST['AddWarning'])){
                     <?php
               if(isset($_POST['addProjDoc'])) 
               {
-                //echo $_POST['addDocument'];
+                echo $_POST['addDocument'];
                 addProjectDocument($projectID, $_POST['addDocument'], $_POST['Deadline']);
               }
 
@@ -333,43 +333,23 @@ if(isset($_POST['AddWarning'])){
                       <div class="row">
                           <p class="collections-title">
 
-                            <strong>#<?php echo $document['documentID']; ?></strong><?php echo" ".$document['documentName']; ?></p>
-                            <a class="waves-effect waves-light btn modal-trigger" href="#modal<?php echo $document['documentID']; ?>">Modal</a>
-                            <!-- Modal Structure -->
-<div id="modal<?php echo $document['documentID']; ?>" class="modal">
-  <div class="modal-content">
-  <?php 
-     $Advices = getAdvice($document['documentID']);
-     if($Advices != NULL){
-     foreach ($Advices as $Advice) {
-       
-       
-     ?>
-    <h4><?php echo $Advice['adviceType'];  ?></h4>
-    <p><?php echo $Advice['adviceTekst']; ?></p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
-<?php  }; 
-}else{ echo "geen advies gegeven"; }
-?>
 
-                        </div>
-
+                        
                             <form action='#' name='input' method='POST'>
                               <div class="col s5">
+                              <div class="col s12">
                               <input type="hidden" name="ID" value=<?php echo $document['documentID'] ?>>
                               <strong><?php echo $document['documentName']; ?></strong>
+                                </div>
+                              <a class="waves-effect waves-light btn modal-trigger" href="#modal<?php echo $document['documentID']; ?>">Info</a>
                             </div>
                               
                         <div class="col s4">
                           <strong>Deadline: </strong>
                           <input type="date" name="Deadline" value=<?php echo $document['documentDeadline']; ?>></div>
                             <div class="col s3">
-                              <input type="submit" class="waves-effect waves-light red btn" value="toevoegen">
-                              <input type="submit" class="waves-effect waves-light red btn" value="ingeleverd">
+                              <input type="submit" class="waves-effect waves-light red btn" value="Aanpassen">
+                              <input type="submit" class="waves-effect waves-light red btn" value="Inleveren ">
                             </div>
                             </form>
                       </div>
