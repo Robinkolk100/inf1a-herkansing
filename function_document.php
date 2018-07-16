@@ -3,14 +3,14 @@ function NewDocument($documentName)
 {
     $count = 0;
     $errcount = 0;
-    $message = array();
+    $errorArray = array();
     // Check if variable is an integer
     if ((empty($documentName))) 
     {
-        array_push($message, "Niks ingevult<br>");
+        array_push($errorArray, "Niks ingevult<br>");
     }
 
-    $errcount = count($message);
+    $errcount = count($errorArray);
     if ($errcount == 0) 
     {
 
@@ -22,23 +22,23 @@ function NewDocument($documentName)
 
         if ($conn->query($sql) === true) 
         {
-            array_push($message, "<span class='card-title red-text text-accent-4'><h3>".$documentName." is aangemaakt.</span></h3>");
+            /* close connection */
+            $conn->close();
+
+            return 1;
         } 
         else 
         {
-            array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan bij het aanmaken van het document</span></h3>");
-                //echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-        /* close connection */
-        $conn->close();
-        
-        return $message;
+            /* close connection */
+            $conn->close();
+
+            return NULL;
         }
     } 
     else 
     {
 
-        return $message;
+        return NULL;
     }
 }
 ?>
