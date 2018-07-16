@@ -11,8 +11,7 @@
 	<form action="#" method="post">
 		projectID : <input type="text" name="projectID"><br>
 		documentID : <input type="text" name="documentID"><br>
-		documentLink : <input type="text" name="documentLink"><br>
-		documentUpload : <input type="date" name="documentUpload"><br>
+		documentUpload : <input type="date" name="deadline"><br>
 		<input type="submit" name="submit" value="submit"><br>
 	</form>
 </body>
@@ -20,8 +19,7 @@
 	if (isset($_POST["submit"])) {
 		$projectID = $_POST["projectID"];
 		$documentID = $_POST["documentID"];
-		$documentLink = $_POST["documentLink"];
-		$documentUpload = $_POST["documentUpload"];
+		$deadline = $_POST["deadline"];
 		$test = addProjectDocument($projectID, $documentID, $deadline);
 		foreach ($test as $value) {
 			echo "$value <br>";

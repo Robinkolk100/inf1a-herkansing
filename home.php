@@ -307,12 +307,13 @@ if(isset($_POST['AddWarning'])){
       echo "<input type='hidden' value=".$projectID." name='projectId' />";
       ?>        
     </select>
-    <p>nieuw lid toevoegen <input type='submit' value='add lid'></p>
+    <input type="date" name="Deadline">
+    <p> <input type='submit' value='toevoegen'></p>
   </form>
                     </li>
 
                     <?php
-                    $documenten = getDocuments();
+                    $documenten = getProjectDocuments($projectID);
                     if($documenten != NULL){
                foreach ($documenten as $document) {
                  ?>
@@ -320,7 +321,12 @@ if(isset($_POST['AddWarning'])){
                       <div class="row">
                         <div class="col s6">
                           <p class="collections-title">
-                            <strong>#<?php echo $document['documentID']; ?></strong><?php echo" ".$document['documentName']; ?></p>
+                            <form action='#' name='input' method='POST'>
+                              <input type="hidden" name="ID" value=<?php echo $document['documentID'] ?>>
+                              <strong><?php echo $document['documentName']; ?></strong>
+                              <input type="date" name="Deadline" value=<?php echo $document['documentDeadline']; ?>>
+                              <input type="submit" name="addProjDoc" value="toevoegen">
+                            </form>
                         </div>
                       </div>
                     </li>
@@ -331,9 +337,18 @@ if(isset($_POST['AddWarning'])){
               </div>
             </div>
             <!--work collections end-->
-            <?php  } else {
-                  echo"geen project geselect";
-                }
+            <?php  
+              } else {
+                echo"geen project geselect";
+              }
+
+              if(isset($_POST['addProjDoc'])) {
+                echo "<h1> hallo </h1>";
+                // echo $projectID;
+                // echo $_POST['ID'];
+                // echo $_POST['Deadline'];
+                //addProjectDocument($projectID, $_POST['ID'], $_POST['Deadline']);
+              }
         ?>
             <!--card widgets start-->
             <div id="card-widgets">
