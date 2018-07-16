@@ -230,7 +230,7 @@ foreach ($projects as $project) {
 	
 	?>
 
-  <form action='#' name='input' method='GET'>
+  <form action='#' name='input' method='POST'>
     <select name="addmember" style="display: block;">
     <?php 
       while ($row = mysqli_fetch_array($result))
@@ -243,10 +243,8 @@ foreach ($projects as $project) {
     <p>nieuw lid toevoegen <input type='submit' value='add lid'></p>
   </form>
 <?php 
-  if(isset($_GET['addmember'])){
-    echo "hallo";
-    // addProjectMember($_GET['addmember'], $_GET['project']);
-    // header('Location: home.php?project='.$projectID);
+  if(isset($_POST['addmember'])){
+     addProjectMember($_POST['addmember'], $_GET['project']);
   }else{}
 ?>
                       <p>alle project leden met waarschuwingen</p>
