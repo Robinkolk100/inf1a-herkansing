@@ -42,10 +42,8 @@
                 $result->close();
                 /* close connection */
                 $conn->close();
-                array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er is iets fout gegaan met het uploaden van de advies.</span></h3>");
-
-                //echo "Error: " . $sql . "<br>" . $conn->error;
-                return $errorArray;
+               
+                return NULL;
             }
         }
         else
