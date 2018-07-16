@@ -13,6 +13,7 @@ include 'function_getProjectsYearOne.php';
 include 'function_getProjectsYearTwo.php';
 include 'function_getProjectsYearTree.php';
 include 'function_getProjectsYearFour.php';
+include 'function_getProjectDocuments.php';
 //print_r($_SESSION)
 ?>
 <!DOCTYPE html>
@@ -280,77 +281,27 @@ if(isset($_POST['AddWarning'])){
                   <ul id="issues-collection" class="collection z-depth-1">
                     <li class="collection-item avatar">
                       <i class="material-icons red accent-2 circle">library_books</i>
-                      <h6 class="collection-header m-0">Project document(en)</h6>
+                      <h6 class="collection-header m-0">Project document(en) <?php echo $projectID ?>  </h6>
                       <p>Assigned to you</p>
                     </li>
+                    <?php
+                    $projectdocumenten = getProjectDocuments($projectID);
+               foreach ($projectdocumenten as $document) {
+                 ?>
                     <li class="collection-item">
                       <div class="row">
-                        <div class="col s7">
+                        <div class="col s6">
                           <p class="collections-title">
-                            <strong>#102</strong> Home Page</p>
-                          <p class="collections-content">Web Project</p>
+                            <strong>#<?php echo $document['documentID']; ?></strong><?php echo $document['documentName']; ?></p>
                         </div>
-                        <div class="col s2">
-                          <span class="task-cat deep-orange accent-2">P1</span>
-                        </div>
-                        <div class="col s3">
-                          <div class="progress">
-                            <div class="determinate" style="width: 70%"></div>
-                          </div>
+                        <div class="col s6">
+                          <p class="collections-title">
+                            <strong>deadline <?php echo $document['documentDeadline']; ?></p>
+                          <p class="collections-content">Upload <?php echo $document['documentUpload']; ?></p>
                         </div>
                       </div>
                     </li>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s7">
-                          <p class="collections-title">
-                            <strong>#108</strong> API Fix</p>
-                          <p class="collections-content">API Project </p>
-                        </div>
-                        <div class="col s2">
-                          <span class="task-cat cyan">P2</span>
-                        </div>
-                        <div class="col s3">
-                          <div class="progress">
-                            <div class="determinate" style="width: 40%"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s7">
-                          <p class="collections-title">
-                            <strong>#205</strong> Profile page css</p>
-                          <p class="collections-content">New Project </p>
-                        </div>
-                        <div class="col s2">
-                          <span class="task-cat red accent-2">P3</span>
-                        </div>
-                        <div class="col s3">
-                          <div class="progress">
-                            <div class="determinate" style="width: 95%"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s7">
-                          <p class="collections-title">
-                            <strong>#188</strong> SAP Changes</p>
-                          <p class="collections-content">SAP Project</p>
-                        </div>
-                        <div class="col s2">
-                          <span class="task-cat teal accent-4">P1</span>
-                        </div>
-                        <div class="col s3">
-                          <div class="progress">
-                            <div class="determinate" style="width: 10%"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                    <?php }?>
                   </ul>
                 </div>
               </div>
