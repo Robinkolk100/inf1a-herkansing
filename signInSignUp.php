@@ -64,6 +64,9 @@ include 'function_account.php';
                 foreach ($inlog as $value) {
                     echo $value . "<br>";
                 }
+                if($_SESSION["login"] = 1){
+                    header('Location: home.php');
+                }
             }
             ?>
         </div>
