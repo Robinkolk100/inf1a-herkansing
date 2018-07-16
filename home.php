@@ -251,7 +251,6 @@ foreach ($projects as $project) {
      addProjectMember($_POST['addmember'], $_GET['project']);
   }else{}
 ?>
-                      <p>alle project leden met waarschuwingen</p>
                     </li>
                     <?php 
 $allProjectMembers = getProjectMembers($_GET['project']);
@@ -282,44 +281,36 @@ if(isset($_POST['AddWarning'])){
 
                   </ul>
                 </div>
+                
+
                 <div class="col s12 m12 l6">
-                  <ul id="issues-collection" class="collection z-depth-1">
+                  <ul id="issues-collection " class="collection z-depth-1">
                     <li class="collection-item red accent-2 avatar">
                       <i class="material-icons red accent-2 circle">library_books</i>
-                      <h6 class="collection-header m-0">Project document(en) <?php echo $projectID ?>  </h6>
-                      <p>Assigned to you</p>
-                    </li>
-                    <?php
-                    $projectdocumenten = getProjectDocuments($projectID);
-                    if($projectdocumenten != NULL){
-               foreach ($projectdocumenten as $document) {
-                 ?>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s6">
-                          <p class="collections-title">
-                            <strong>#<?php echo $document['documentID']; ?></strong><?php echo $document['documentName']; ?></p>
-                        </div>
-                        <div class="col s6">
-                          <p class="collections-title">
-                            <strong>deadline <?php echo $document['documentDeadline']; ?></p>
-                          <p class="collections-content">Upload <?php echo $document['documentUpload']; ?></p>
-                        </div>
-                      </div>
-                    </li>
-                    <?php }
-                    } else{ echo "geen documenten"; }?>
-                  </ul>
-                </div>
-
-
-                <div class="col s12 m12 l6">
-                  <ul id="issues-collection" class="collection z-depth-1">
-                    <li class="collection-item avatar">
-                      <i class="material-icons red accent-2 circle">library_books</i>
                       <h6 class="collection-header m-0">documents</h6>
-                      <p>Alle documents</p>
+                      <?php
+                      $query = "SELECT * FROM `users`ORDER BY `users`.`UserID` ASC ";
+                      $conn = dbConnect();
+        //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
+    $result = @mysqli_query($conn,$query ) or die(mysqli_error());
+  
+
+  ?>
+
+  <form action='#' name='input' method='POST'>
+    <select name="addmember" style="display: block;">
+    <?php 
+      while ($row = mysqli_fetch_array($result))
+      {
+          echo "<option value=".$row['userID'].">".$row['userEmail']."</option>";
+      }
+      echo "<input type='hidden' value=".$projectID." name='projectId' />";
+      ?>        
+    </select>
+    <p>nieuw lid toevoegen <input type='submit' value='add lid'></p>
+  </form>
                     </li>
+
                     <?php
                     $documenten = getDocuments();
                     if($documenten != NULL){
