@@ -49,12 +49,12 @@
                 //return sql results
     			array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>U hebt nog niet ingeschreven voor een project.</span></h3>");
 
-   				return $errorArray;
+   				return NULL;
    			}
    		}
    		else
    		{
-    		return $errorArray;
+    		return NULL;
     	}
     }
 

@@ -1,0 +1,56 @@
+<?php 
+session_start();
+include 'db_connect.php';
+include 'function_login.php';
+include 'function_account.php';
+include 'function_getProjectsYearOne.php';
+include 'function_getProjectMembers.php';
+include 'function_getUsers.php';
+//print_r($_SESSION)
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>SmartProjects</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body class="loaded">
+    <header id="header" class="page-topbar">
+    
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="home.php" class="brand-logo">SmartProject</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="Index.php">Uitloggen</a></li>
+      </ul>
+    </div>
+  </nav>
+        </header>
+    <div id="main">
+      <!-- START WRAPPER -->
+      <div class="wrapper">
+        <!-- START LEFT SIDEBAR NAV-->
+    <aside id="left-sidebar-nav">
+      <li class="no-padding">
+        <ul class="collapsible" data-collapsible="accordion">
+          <a  href = "test_addProject.php"  class="waves-effect waves-light btn">nieuw project</a>
+            <li class="bold active">
+              <a class="collapsible-header waves-effect waves-cyan active">
+                <i class="material-icons">dashboard</i>
+                  <span class="nav-text">Jaar 1</span>
+              </a>
+              <div class="collapsible-body" style="display: block;">
+                <ul>
+                  <li>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+      </li>
+    </aside>  
