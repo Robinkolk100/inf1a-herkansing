@@ -3,6 +3,9 @@ session_start();
 include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
+include 'function_addProject.php';
+include 'function_addProjectMember.php';
+include 'function_warningProjectMember.php';
 //include 'function_getProjects.php';
 include 'function_getProjectMembers.php';
 include 'function_getUsers.php';
@@ -23,6 +26,9 @@ include 'function_getProjectsYearFour.php';
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/hideshow.js"></script>
+
 </head>
 <body class="loaded">
     <header id="header" class="page-topbar">
@@ -41,12 +47,11 @@ include 'function_getProjectsYearFour.php';
         <!-- START LEFT SIDEBAR NAV-->
     <aside id="left-sidebar-nav">
           <li class="no-padding">
-              <ul class="collapsible" data-collapsible="accordion">
-              <a  href = "test_addProject.php"  class="waves-effect waves-light btn">nieuw project</a>
+              <ul class="collapsible" data-collapsible="accordion">        
                 <li class="bold active">
                   <a class="collapsible-header waves-effect waves-cyan active">
                     <i class="material-icons">dashboard</i>
-                    <span class="nav-text">Jaar 1</span>
+                    <span class="nav-text">Jaar 1 </span> 
                   </a>
                   <div class="collapsible-body" style="display: block;">
                     <ul>
@@ -136,8 +141,12 @@ foreach ($projects as $project) {
         <?php 
         if(isset($_GET['project'])){
           echo"laat project gegevens zien";
+<<<<<<< HEAD
           $projectID = $_GET['project'];
 ?>  
+=======
+        ?>  
+>>>>>>> Menu-Change
         <div class="container">
             <!--card stats start-->
             <div id="card-stats">
@@ -248,26 +257,34 @@ foreach ($allProjectMembers as $Members) {
 
 echo '<li class="collection-item">';
 echo '<div class="row">';
-echo '<div class="col s6">';
-echo '<p class="collections-title">Naam: '.$Members["userName"];'</p>';
+echo '<div class="col s5">';
+echo '<p class="collections-title">Naam: '.$Members["userName"].'</p>';
 echo '</div>';
-echo '<div class="col s6">';
-echo '<p class="collections-title">waarschuwingen : '.$Members["WarningCount"];'</p>';
+echo '<div class="col s4">';
+echo '<p class="collections-title">waarschuwingen : '.$Members["WarningCount"].'</p>';
+echo '</div>';
+echo '<div class="col s3">';
+echo "<form action=\"#\" method=\"post\">";
+echo "<input type=\"hidden\" name=\"ID\" value='".$Members["userID"]."'>";
+echo "<input type=\"submit\" class=\"waves-effect waves-light btn\" name=\"AddWarning\" value=\"Add\">";
+echo "</form>";
 echo '</div>';
 echo '</div>';
 echo '</li>';
-}?>
-                    
+}
 
-
+if(isset($_POST['AddWarning'])){
+  warningProjectMember($_POST['ID'], $_GET['project']);
+}
+?>
 
                   </ul>
                 </div>
                 <div class="col s12 m12 l6">
                   <ul id="issues-collection" class="collection z-depth-1">
                     <li class="collection-item avatar">
-                      <i class="material-icons red accent-2 circle">bug_report</i>
-                      <h6 class="collection-header m-0">Issues</h6>
+                      <i class="material-icons red accent-2 circle">library_books</i>
+                      <h6 class="collection-header m-0">Project document(en)</h6>
                       <p>Assigned to you</p>
                     </li>
                     <li class="collection-item">
@@ -353,43 +370,42 @@ echo '</li>';
                 <div class="col s12 m4 l4">
                   <ul id="task-card" class="collection with-header">
                     <li class="collection-header teal accent-4">
-                      <h4 class="task-card-title">My Task</h4>
-                      <p class="task-card-date">Sept 16, 2017</p>
+                      <h4 class="task-card-title">Nieuw Project</h4>
                     </li>
-                    <li class="collection-item dismissable" style="touch-action: pan-y;">
-                      <input id="task1" type="checkbox">
-                      <label for="task1" style="text-decoration: none;">Create Mobile App UI.
-                        <a href="#" class="secondary-content">
-                          <span class="ultra-small">Today</span>
-                        </a>
-                      </label>
-                      <span class="task-cat cyan">Mobile App</span>
-                    </li>
-                    <li class="collection-item dismissable" style="touch-action: pan-y;">
-                      <input id="task2" type="checkbox">
-                      <label for="task2" style="text-decoration: none;">Check the new API standerds.
-                        <a href="#" class="secondary-content">
-                          <span class="ultra-small">Monday</span>
-                        </a>
-                      </label>
-                      <span class="task-cat red accent-2">Web API</span>
-                    </li>
-                    <li class="collection-item dismissable" style="touch-action: pan-y;">
-                      <input id="task3" checked="checked" type="checkbox">
-                      <label for="task3" style="text-decoration: line-through;">Check the new Mockup of ABC.
-                        <a href="#" class="secondary-content">
-                          <span class="ultra-small">Wednesday</span>
-                        </a>
-                      </label>
-                      <span class="task-cat teal accent-4">Mockup</span>
-                    </li>
-                    <li class="collection-item dismissable" style="touch-action: pan-y;">
-                      <input id="task4" checked="checked" disabled="disabled" type="checkbox">
-                      <label for="task4" style="text-decoration: line-through;">I did it !</label>
-                      <span class="task-cat deep-orange accent-2">Mobile App</span>
-                    </li>
+                    <form action="#" method="post">
+                      <li style="touch-action: pan-y;">
+                        <input type="text" name="projectGroup" placeholder="projectGroup">
+                      </li>
+                      <li style="touch-action: pan-y;">
+                        <input type="text" name="projectPeriod" placeholder="projectPeriod">
+                      </li>
+                      <li style="touch-action: pan-y;">
+                        <input type="text" name="projectYear" placeholder="projectYear">
+                      </li>
+                      <li style="touch-action: pan-y;">
+                        <input type="text" name="projectName" placeholder="projectName">
+                      </li>
+                      <li style="touch-action: pan-y;">
+                        <input class="waves-effect waves-light btn" type="submit" name="NewProject" value="Aanmaken" style="width: 100%;"><br>
+                      </li>
+                    </form>
                   </ul>
                 </div>
+                <?php 
+                  if (isset($_POST["NewProject"])) {
+                    $projectGroup = $_POST["projectGroup"];
+                    $projectPeriod = $_POST["projectPeriod"];
+                    $projectYear = $_POST["projectYear"];
+                    $projectName = $_POST["projectName"];
+
+                    $test = addProject($projectGroup, $projectPeriod, $projectYear, $projectName);
+                    foreach ($test as $value) {
+                      echo "$value <br>";
+                    }
+                  } 
+                ?>
+
+
                 <?php 
                 $User =getUsers($_SESSION['userID']);
 
