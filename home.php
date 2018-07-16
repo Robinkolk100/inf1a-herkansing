@@ -311,7 +311,6 @@ if(isset($_POST['AddWarning'])){
       {
           echo "<option value=".$row['documentID'].">".$row['documentName']."</option>";
       }
-      echo "<input type='hidden' value=".$projectID." name='documentID' />";
       ?>        
     </select>
     <input type="date" name="Deadline">
@@ -322,7 +321,8 @@ if(isset($_POST['AddWarning'])){
                     <?php
               if(isset($_POST['addProjDoc'])) 
               {
-                addProjectDocument($projectID, $_POST['documentID'], $_POST['Deadline']);
+                //echo $_POST['addDocument'];
+                addProjectDocument($projectID, $_POST['addDocument'], $_POST['Deadline']);
               }
 
                     $documenten = getProjectDocuments($projectID);
