@@ -12,7 +12,7 @@
 </head>
 <body>
 	<form action="#" method="post">
-		projectgroup : <input type="text" name="projectGroup"><br>
+		projectgroup : <input type="text" name="projectGroup" placeholder="projectGroup"><br>
 		projectperiod : <input type="text" name="projectPeriod"><br>
 		projectyear : <input type="text" name="projectYear"><br>
 		projectname : <input type="text" name="projectName"><br>
