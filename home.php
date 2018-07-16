@@ -44,7 +44,7 @@ include 'function_getAdvice.php';
     <header id="header" class="page-topbar">
     
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="home.php" class="brand-logo">SmartProject</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="home.php" class="brand-logo">SmartProjects</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="function_logout.php">Uitloggen</a></li>
       </ul>

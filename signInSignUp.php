@@ -14,7 +14,7 @@ include 'function_account.php';
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container"><a id="logo-container" href="Index.php" class="brand-logo">SmartProject</a>
+            <div class="nav-wrapper container"><a id="logo-container" href="Index.php" class="brand-logo">SmartProjects</a>
       <ul class="right hide-on-med-and-down">
       </ul>
 
