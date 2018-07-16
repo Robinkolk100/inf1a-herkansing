@@ -4,6 +4,7 @@ include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
 include 'function_getProjects.php';
+include 'function_getProjectMembers.php';
 //print_r($_SESSION)
 ?>
 <!DOCTYPE html>
@@ -48,14 +49,9 @@ include 'function_getProjects.php';
 $projects = getProjects($_SESSION['userID']);
 foreach ($projects as $project) {
                           if ($project['projectYear'] == 1) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"</a><?php
-                            echo "INF";
-                            echo $project['projectPeriode'];
-                            echo $project['projectGroup'];
-                            echo $project['projectYear'] . " ";
-                            echo $project['projectName'];
-                            echo"</li>";
+                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
+                          else{}
                     }
                     ?>
                     </ul>
@@ -72,14 +68,9 @@ foreach ($projects as $project) {
 $projects = getProjects($_SESSION['userID']);
 foreach ($projects as $project) {
                           if ($project['projectYear'] == 2) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"</a><?php
-                            echo "INF";
-                            echo $project['projectPeriode'];
-                            echo $project['projectGroup'];
-                            echo $project['projectYear'] . " ";
-                            echo $project['projectName'];
-                            echo"</li>";
+                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
+                          else{}
                     }
                     ?>
                     </ul>
@@ -96,14 +87,9 @@ foreach ($projects as $project) {
 $projects = getProjects($_SESSION['userID']);
 foreach ($projects as $project) {
                           if ($project['projectYear'] == 3) {
-                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"</a><?php
-                            echo "INF";
-                            echo $project['projectPeriode'];
-                            echo $project['projectGroup'];
-                            echo $project['projectYear'] . " ";
-                            echo $project['projectName'];
-                            echo"</li>";
+                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
+                          else{}
                     }
                     ?>
                     </ul>
@@ -115,11 +101,11 @@ foreach ($projects as $project) {
       
         <!-- END LEFT SIDEBAR NAV-->
         <!-- //////////////////////////////////////////////////////////////////////////// -->
-        <!--START CONTENT-->
+        <!--START CONTENT-->     
         <?php 
         if(isset($_GET['project'])){
           echo"laat project gegevens zien";
-?>       
+?>  
         <div class="container">
             <!--card stats start-->
             <div id="card-stats">
@@ -197,66 +183,29 @@ foreach ($projects as $project) {
                 <div class="col s12 m12 l6">
                   <ul id="projects-collection" class="collection z-depth-1">
                     <li class="collection-item avatar">
-                      <i class="material-icons cyan circle">card_travel</i>
-                      <h6 class="collection-header m-0">Projects</h6>
-                      <p>Your Favorites</p>
+                      <i class="material-icons cyan circle">account_circle</i>
+                      <h6 class="collection-header m-0">Project leden</h6>
+                      <p>alle project leden met waarschuwingen</p>
                     </li>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s6">
-                          <p class="collections-title">Web App</p>
-                          <p class="collections-content">AEC Company</p>
-                        </div>
-                        <div class="col s3">
-                          <span class="task-cat cyan">Development</span>
-                        </div>
-                        <div class="col s3">
-                          <div id="project-line-1"><canvas style="display: inline-block; width: 124.733px; height: 30px; vertical-align: top;" width="124" height="30"></canvas></div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s6">
-                          <p class="collections-title">Mobile App for Social</p>
-                          <p class="collections-content">iSocial App</p>
-                        </div>
-                        <div class="col s3">
-                          <span class="task-cat red accent-2">UI/UX</span>
-                        </div>
-                        <div class="col s3">
-                          <div id="project-line-2"><canvas style="display: inline-block; width: 124.733px; height: 30px; vertical-align: top;" width="124" height="30"></canvas></div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s6">
-                          <p class="collections-title">Website</p>
-                          <p class="collections-content">MediTab</p>
-                        </div>
-                        <div class="col s3">
-                          <span class="task-cat teal accent-4">Marketing</span>
-                        </div>
-                        <div class="col s3">
-                          <div id="project-line-3"><canvas style="display: inline-block; width: 124.733px; height: 30px; vertical-align: top;" width="124" height="30"></canvas></div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="collection-item">
-                      <div class="row">
-                        <div class="col s6">
-                          <p class="collections-title">AdWord campaign</p>
-                          <p class="collections-content">True Line</p>
-                        </div>
-                        <div class="col s3">
-                          <span class="task-cat deep-orange accent-2">SEO</span>
-                        </div>
-                        <div class="col s3">
-                          <div id="project-line-4"><canvas style="display: inline-block; width: 124.733px; height: 30px; vertical-align: top;" width="124" height="30"></canvas></div>
-                        </div>
-                      </div>
-                    </li>
+                    <?php 
+$allProjectMembers = getProjectMembers($_GET['project']);
+foreach ($allProjectMembers as $Members) {
+
+echo '<li class="collection-item">';
+echo '<div class="row">';
+echo '<div class="col s6">';
+echo '<p class="collections-title">Naam: '.$Members["userName"];'</p>';
+echo '</div>';
+echo '<div class="col s6">';
+echo '<p class="collections-title">waarschuwingen : '.$Members["WarningCount"];'</p>';
+echo '</div>';
+echo '</div>';
+echo '</li>';
+}?>
+                    
+
+
+
                   </ul>
                 </div>
                 <div class="col s12 m12 l6">
