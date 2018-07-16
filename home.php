@@ -289,7 +289,7 @@ if(isset($_POST['AddWarning'])){
                       <i class="material-icons red accent-2 circle">library_books</i>
                       <h6 class="collection-header m-0">documents</h6>
                       <?php
-                      $query = "SELECT * FROM `users`ORDER BY `users`.`UserID` ASC ";
+                      $query = "SELECT * FROM `documents`ORDER BY `documents`.`documentID` ASC ";
                       $conn = dbConnect();
         //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
     $result = @mysqli_query($conn,$query ) or die(mysqli_error());
@@ -302,7 +302,7 @@ if(isset($_POST['AddWarning'])){
     <?php 
       while ($row = mysqli_fetch_array($result))
       {
-          echo "<option value=".$row['userID'].">".$row['userEmail']."</option>";
+          echo "<option value=".$row['documentID'].">".$row['documentName']."</option>";
       }
       echo "<input type='hidden' value=".$projectID." name='projectId' />";
       ?>        
