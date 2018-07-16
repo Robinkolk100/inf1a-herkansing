@@ -3,8 +3,6 @@ session_start();
 if ($_SESSION["login"] !== 1) {
   header('Location:signInSignUp.php');
 }
-
-
 include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
@@ -335,16 +333,20 @@ if (isset($_POST['addmember'])) {
                     $documenten = getProjectDocuments($projectID);
                     if ($documenten != null) {
                       foreach ($documenten as $document) {
+
                         ?>
                     <li class="collection-item">
+                    
                       <div class="row">
                           <p class="collections-title">
+                          
                             <form action='#' name='input' method='POST'>
                               <div class="col s5">
                               <div class="col s12">
                               <input type="hidden" name="ID" value=<?php echo $document['documentID'] ?>>
                               <strong><?php echo $document['documentName']; ?></strong>
                                 </div>
+                                
                               <a class="waves-effect waves-light btn modal-trigger" href="#modal<?php echo $document['documentID']; ?>">Info</a>
                             </div>
                         <div class="col s4">
@@ -357,23 +359,25 @@ if (isset($_POST['addmember'])) {
                         </div>
                           </form>
                           <div id="modal<?php echo $document['documentID']; ?>" class="modal">
-  <div class="modal-content">
-  <?php 
-  $Advices = getAdvice($document['documentID']);
-  if ($Advices != null) {
-    foreach ($Advices as $Advice) {
+                            <div class="modal-content">
+                          <?php 
+                          $Advices = getAdvice($document['documentID']);
+                          if ($Advices != null) {
+                            foreach ($Advices as $Advice) {
+                              ?>
 
-
-      ?>
+   
     <h4><?php echo $Advice['adviceType']; ?></h4>
     <p><?php echo $Advice['adviceTekst']; ?></p>
+    <?php 
+  }; ?>
   </div>
   <div class="modal-footer">
     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
 </div>
-<?php 
-};
+<?php
+
 } else {
   echo "geen advies gegeven";
 }
