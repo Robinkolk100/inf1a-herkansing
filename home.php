@@ -48,12 +48,9 @@ include 'function_getUsers.php';
                     <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
-if(!empty($project)){
+if(!empty($projects)){
 foreach ($projects as $project) {
-                          if ($project['projectYear'] == 1) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                          else{}
                     }
                   } else{
                     echo "geen project voor dit jaar";
@@ -71,12 +68,9 @@ foreach ($projects as $project) {
                   <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
-if(!empty($project)){
+if(!empty($projects)){
 foreach ($projects as $project) {
-                          if ($project['projectYear'] == 2) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                          else{}
                     }
                   }else{
                     echo "geen project voor dit jaar";
@@ -94,12 +88,30 @@ foreach ($projects as $project) {
                   <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
-if(!empty($project)){
+if(!empty($projects)){
 foreach ($projects as $project) {
-                          if ($project['projectYear'] == 3) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
-                          else{}
+                        }
+                      else{
+                          echo "geen project voor dit jaar";
+                        }
+                    ?>
+                    </ul>
+                  </div>
+                </li>
+                <li class="bold">
+                  <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">web</i>
+                    <span class="nav-text">Jaar 4</span>
+                  </a>
+                  <div class="collapsible-body"style="display:block;">
+                  <ul>
+<?php 
+$projects = getProjects($_SESSION['userID']);
+if(!empty($projects)){
+foreach ($projects as $project) {
+                            ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
                         }
                       else{
