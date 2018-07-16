@@ -7,10 +7,9 @@
 		$errorArray = array();
         $conn = dbConnect();
 	   
-	    $result = $conn->query("SELECT `userID`, `userName`
+	    $result = $conn->query("SELECT `userID`, `userName`, `userEmail`
                                 FROM `users`                             
-                                WHERE `userName` LIKE '%".$userReference."%'
-                                OR `userID` LIKE '".$userReference."'
+                                WHERE `userID` = '".$userReference."'
                                 ORDER BY `userID` ASC;");
 	    
     		

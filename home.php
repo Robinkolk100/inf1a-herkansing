@@ -5,6 +5,7 @@ include 'function_login.php';
 include 'function_account.php';
 include 'function_getProjects.php';
 include 'function_getProjectMembers.php';
+include 'function_getUsers.php';
 //print_r($_SESSION)
 ?>
 <!DOCTYPE html>
@@ -47,12 +48,16 @@ include 'function_getProjectMembers.php';
                     <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
+if(!empty($project)){
 foreach ($projects as $project) {
                           if ($project['projectYear'] == 1) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
                           else{}
                     }
+                  } else{
+                    echo "geen project voor dit jaar";
+                  }
                     ?>
                     </ul>
                   </div>
@@ -66,12 +71,16 @@ foreach ($projects as $project) {
                   <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
+if(!empty($project)){
 foreach ($projects as $project) {
                           if ($project['projectYear'] == 2) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
                           else{}
                     }
+                  }else{
+                    echo "geen project voor dit jaar";
+                  }
                     ?>
                     </ul>
                   </div>
@@ -85,12 +94,17 @@ foreach ($projects as $project) {
                   <ul>
 <?php 
 $projects = getProjects($_SESSION['userID']);
+if(!empty($project)){
 foreach ($projects as $project) {
                           if ($project['projectYear'] == 3) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
                           }
                           else{}
-                    }
+                          }
+                        }
+                      else{
+                          echo "geen project voor dit jaar";
+                        }
                     ?>
                     </ul>
                   </div>
@@ -336,18 +350,15 @@ echo '</li>';
                   </ul>
                 </div>
                 <?php 
-                $conn = dbConnect();
-                $result = $conn->query("SELECT * FROM `users` WHERE `users`.`userID` = '".$_SESSION['userID']."' ;");
-        
-                while($row = mysqli_fetch_assoc($result)) {
+                $User =getUsers($_SESSION['userID']);
+
+                while($row = mysqli_fetch_assoc($User)) {
                   $userEmail = $row['userEmail'];
                   $userName = $row['userName'];
 
                   }
-                        /* close connection */
-                        $conn->close();                
-                ?>
-                
+               
+                ?> 
                 <div class="col s12 m4 l4">
                   <div id="profile-card" class="card">
                   <p>User gegevens</p>
