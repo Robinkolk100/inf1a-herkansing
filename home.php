@@ -6,6 +6,7 @@ include 'function_account.php';
 include 'function_document.php';
 include 'function_addProject.php';
 include 'function_addProjectMember.php';
+include 'function_addProjectDocument.php';
 include 'function_warningProjectMember.php';
 //include 'function_getProjects.php';
 include 'function_getProjectMembers.php';
@@ -299,28 +300,34 @@ if(isset($_POST['AddWarning'])){
   ?>
 
   <form action='#' name='input' method='POST'>
-    <select name="addmember" style="display: block;">
+    <select name="addDocument" style="display: block;">
     <?php 
       while ($row = mysqli_fetch_array($result))
       {
           echo "<option value=".$row['documentID'].">".$row['documentName']."</option>";
       }
-      echo "<input type='hidden' value=".$projectID." name='projectId' />";
+      echo "<input type='hidden' value=".$projectID." name='documentID' />";
       ?>        
     </select>
-    <p>nieuw lid toevoegen <input type='submit' value='add lid'></p>
+    <input type="date" name="Deadline">
+    <p> <input type='submit' name="addProjDoc" value='toevoegen'></p>
   </form>
                     </li>
 
                     <?php
-                    $documenten = getDocuments();
+              if(isset($_POST['addProjDoc'])) 
+              {
+                addProjectDocument($projectID, $_POST['documentID'], $_POST['Deadline']);
+              }
+
+                    $documenten = getProjectDocuments($projectID);
                     if($documenten != NULL){
                foreach ($documenten as $document) {
                  ?>
                     <li class="collection-item">
                       <div class="row">
-                        <div class="col s6">
                           <p class="collections-title">
+
                             <strong>#<?php echo $document['documentID']; ?></strong><?php echo" ".$document['documentName']; ?></p>
                             <a class="waves-effect waves-light btn modal-trigger" href="#modal<?php echo $document['documentID']; ?>">Modal</a>
                             <!-- Modal Structure -->
@@ -345,6 +352,21 @@ if(isset($_POST['AddWarning'])){
 ?>
 
                         </div>
+
+                            <form action='#' name='input' method='POST'>
+                              <div class="col s5">
+                              <input type="hidden" name="ID" value=<?php echo $document['documentID'] ?>>
+                              <strong><?php echo $document['documentName']; ?></strong>
+                            </div>
+                              
+                        <div class="col s4">
+                          <strong>Deadline: </strong>
+                          <input type="date" name="Deadline" value=<?php echo $document['documentDeadline']; ?>></div>
+                            <div class="col s3">
+                              <input type="submit" class="waves-effect waves-light red btn" value="toevoegen">
+                              <input type="submit" class="waves-effect waves-light red btn" value="ingeleverd">
+                            </div>
+                            </form>
                       </div>
                     </li>
                     <?php }
@@ -354,9 +376,10 @@ if(isset($_POST['AddWarning'])){
               </div>
             </div>
             <!--work collections end-->
-            <?php  } else {
-                  echo"geen project geselect";
-                }
+            <?php  
+              } else {
+                echo"geen project geselect";
+              }
         ?>
             <!--card widgets start-->
             <div id="card-widgets">
