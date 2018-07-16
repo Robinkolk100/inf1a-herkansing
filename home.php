@@ -3,9 +3,13 @@ session_start();
 include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
-include 'function_getProjects.php';
+//include 'function_getProjects.php';
 include 'function_getProjectMembers.php';
 include 'function_getUsers.php';
+include 'function_getProjectsYearOne.php';
+include 'function_getProjectsYearTwo.php';
+include 'function_getProjectsYearTree.php';
+include 'function_getProjectsYearFour.php';
 //print_r($_SESSION)
 ?>
 <!DOCTYPE html>
@@ -47,17 +51,10 @@ include 'function_getUsers.php';
                   <div class="collapsible-body" style="display: block;">
                     <ul>
 <?php 
-<<<<<<< HEAD
-$projects = getProjects($_SESSION['userID']);
-=======
-$projects = getProjectsyear1($_SESSION['userID']);
->>>>>>> 15f288648821859b8b64f339a589d91022375f7f
+$projects = getProjectsYearOne($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
-                          if ($project['projectYear'] == 1) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                          else{}
                     }
                   } else{
                     echo "geen project voor dit jaar";
@@ -74,15 +71,10 @@ foreach ($projects as $project) {
                   <div class="collapsible-body" style="display:block;">
                   <ul>
 <?php 
-$projects = getProjects($_SESSION['userID']);
-if(!empty($project)){
-$projects = getProjectsyear2($_SESSION['userID']);
+$projects = getProjectsYearTwo($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
-                          if ($project['projectYear'] == 2) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                          }
-                          else{}
                     }
                   }else{
                     echo "geen project voor dit jaar";
@@ -98,18 +90,8 @@ foreach ($projects as $project) {
                   </a>
                   <div class="collapsible-body"style="display:block;">
                   <ul>
-<<<<<<< HEAD
-                    <?php 
-                      $projects = getProjects($_SESSION['userID']);
-                        if(!empty($projects)){
-                          foreach ($projects as $project) {
-                            if ($project['projectYear'] == 3) {
-                              ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
-                            }
-                            else{}
-=======
 <?php 
-$projects = getProjectsyear3($_SESSION['userID']);
+$projects = getProjectsYearTree($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
@@ -130,11 +112,10 @@ foreach ($projects as $project) {
                   <div class="collapsible-body"style="display:block;">
                   <ul>
 <?php 
-$projects = getProjectsyear4($_SESSION['userID']);
+$projects = getProjectsYearFour($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
->>>>>>> 15f288648821859b8b64f339a589d91022375f7f
                           }
                         }
                       else{
