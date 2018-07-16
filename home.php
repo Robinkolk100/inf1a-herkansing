@@ -229,24 +229,7 @@ foreach ($projects as $project) {
 			  //  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
     $result = @mysqli_query($conn,$query ) or die(mysqli_error());
 	
-<<<<<<< HEAD
-	?><form action='#' name='input' method='GET'>
-<select name="addmember" style="display: block;">
-<?php 
-while ($row = mysqli_fetch_array($result))
-{
-    echo "<option value=".$row['userID'].">".$row['userEmail']."</option>";
-}
-echo "<input type='hidden' value=".$projectID." name='projectId' />";
-?>        
-</select>
-<p>nieuw lit toevoegen <input type='submit' value='add lit'></p>
-</form>
-<?php if(isset($_GET['addmember'])){
-  addProjectMember($_GET['addmember'], $projectID);
-  header('Location: home.php?project='.$projectID);
-}else{}
-=======
+
 	?>
 
   <form action='#' name='input' method='POST'>
@@ -265,7 +248,6 @@ echo "<input type='hidden' value=".$projectID." name='projectId' />";
   if(isset($_POST['addmember'])){
      addProjectMember($_POST['addmember'], $_GET['project']);
   }else{}
->>>>>>> Menu-Change
 ?>
                       <p>alle project leden met waarschuwingen</p>
                     </li>

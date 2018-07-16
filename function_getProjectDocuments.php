@@ -4,11 +4,8 @@
     {
         $errorArray = array();
 
-<<<<<<< HEAD
+
         $conn = dbConnect(); 
-=======
-        $conn = dbConnect();
->>>>>>> Menu-Change
         $result = $conn->query("SELECT `documents`.`documentID`, `documentDeadline`, `documentName`, `documentUpload`
                                 FROM `projectdocuments` 
                                 JOIN `documents` ON `projectdocuments`.`documentID` = `documents`.`documentID` 
@@ -36,11 +33,8 @@
             $conn->close();
             array_push($errorArray, "<span class='card-title red-text text-accent-4'><h3>Er zijn nog geen documenten aangemaakt.</span></h3>");
             //echo "Error: " . $sql . "<br>" . $conn->error;
-<<<<<<< HEAD
+
             return NULL;
-=======
-            return $errorArray;
->>>>>>> Menu-Change
         }
     }
 
