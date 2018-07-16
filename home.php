@@ -47,7 +47,7 @@ include 'function_getUsers.php';
                   <div class="collapsible-body" style="display: block;">
                     <ul>
 <?php 
-$projects = getProjects($_SESSION['userID']);
+$projects = getProjectsyear1($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
@@ -67,7 +67,7 @@ foreach ($projects as $project) {
                   <div class="collapsible-body" style="display:block;">
                   <ul>
 <?php 
-$projects = getProjects($_SESSION['userID']);
+$projects = getProjectsyear2($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
@@ -87,7 +87,7 @@ foreach ($projects as $project) {
                   <div class="collapsible-body"style="display:block;">
                   <ul>
 <?php 
-$projects = getProjects($_SESSION['userID']);
+$projects = getProjectsyear3($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
@@ -108,7 +108,7 @@ foreach ($projects as $project) {
                   <div class="collapsible-body"style="display:block;">
                   <ul>
 <?php 
-$projects = getProjects($_SESSION['userID']);
+$projects = getProjectsyear4($_SESSION['userID']);
 if(!empty($projects)){
 foreach ($projects as $project) {
                             ?><li><a href="home.php?project=<?php echo $project["projectID"]; ?>"><?php echo "INF".$project['projectYear']. "".$project['projectGroup']." ".$project['projectPeriode'] ." " . $project['projectName'].""?></a></li><?php
