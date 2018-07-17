@@ -113,7 +113,7 @@ include 'function_account.php';
                 $signUpEmail = $_POST["signUpEmail"];
                 $signUpPass = $_POST["signUpPass"];
                 
-                if(!empty($signUpUserID) && (!empty($signUpEmail) && (!empty($signUp)))){
+                if(!empty($signUpUserID) && (!empty($signUpEmail) && (!empty($signUpPass)))){
 
                 $account = NewAccountUser($signUpUserID, $signUpEmail, $signUpPass);
                 foreach ($account as $value) {
