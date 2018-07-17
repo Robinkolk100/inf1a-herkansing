@@ -520,7 +520,13 @@ include 'function_getAdviceTips.php';
                                 					}
                                 				?>
 				<?php 
+<<<<<<< HEAD
   } 
+=======
+  } else {
+    echo "geen project geselecteerd";
+  }
+>>>>>>> a2b832c195e91d1a5181cc27052838fc13fce8d7
   ?>
 				<!--card widgets start-->
 				<div id="card-widgets">
