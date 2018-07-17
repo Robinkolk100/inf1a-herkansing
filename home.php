@@ -7,6 +7,7 @@ include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
 include 'function_document.php';
+include 'function_addAdvice.php';
 include 'function_addProject.php';
 include 'function_addProjectMember.php';
 include 'function_addProjectDocument.php';
@@ -364,7 +365,7 @@ include 'function_getAdviceTips.php';
 											</div>
 											<div class="col s3">
 												<input type="submit" class="waves-effect waves-light red btn" value="Aanpassen">
-												<input type="submit" class="waves-effect waves-light red btn" value="Inleveren ">
+												<input type="submit" name="inleveren" class="waves-effect waves-light red btn" value=" Inleveren ">
 											</div>
 										</form>
 										<div id="modal<?php echo $document['documentID']; ?>" class="modal">
@@ -455,7 +456,7 @@ include 'function_getAdviceTips.php';
                                                 <form action="#" method="post">
                                     				<li style="touch-action: pan-y;">
                                     					<strong>Advies Type</strong>
-                                        				<select name="addDocument" style="display: block;">
+                                        				<select name="AdviceType" style="display: block;">
                                         					<option value="Verplichting">Verplichting</option>
                                         					<option value="Valkuil">Valkuil</option>
                                         					<option value="Tip">Tip</option>
@@ -469,16 +470,23 @@ include 'function_getAdviceTips.php';
                                         				<input class="waves-effect waves-red red btn" type="submit" name="addAdvice" value="Aanmaken" style="width: 100%;">
                                     				</li>
                                 				</form>
+                                				<?php
+                                					if(isset($_POST['addAdvice']))
+                                					{
+                                						addAdvice($document['documentID'], $_POST['AdviceType'], $_POST['AdviceTekst']);
+                                					}
+                                				?>
                                 				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
                                             </div>
 										</div>
 									</div>
 								</li>
 								<?php 
-      }
-    } else {
-      echo "geen documenten";
-    } ?>
+      								}
+   	 							} else {
+      								echo "geen documenten";
+    							} 
+    							?>
 							</ul>
 						</div>
 					</div>

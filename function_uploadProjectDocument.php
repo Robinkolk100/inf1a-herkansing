@@ -1,6 +1,6 @@
 <?php
 
-	function uploadProjectDocument($projectID, $documentID, $documentLink) 
+	function uploadProjectDocument($projectID, $documentID) 
 	{
 		$count = 0;
 		$errorCount = 0;
@@ -35,7 +35,7 @@
     		if($count > 0)
     		{
     			$sql = "UPDATE `projectdocuments` 
-                        SET `documentLink`='".$documentLink."', `documentUpload`=NOW() 
+                        SET `documentUpload`=NOW() 
                         WHERE `projectID`='".$projectID."' 
                         AND `documentID`='".$documentID."';";
 
