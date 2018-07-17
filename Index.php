@@ -1,4 +1,3 @@
-
 <?php 
 require_once('function_login.php');
 ?>
@@ -41,8 +40,6 @@ require_once('function_login.php');
 
     </div>
   </div>
-
-
   <div class="container">
     <div class="section">
 
