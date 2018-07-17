@@ -7,6 +7,7 @@ include 'db_connect.php';
 include 'function_login.php';
 include 'function_account.php';
 include 'function_document.php';
+include 'function_addAdvice.php';
 include 'function_addProject.php';
 include 'function_addProjectMember.php';
 include 'function_addProjectDocument.php';
@@ -466,16 +467,23 @@ include 'function_getAdviceTips.php';
                                         				<input class="waves-effect waves-red red btn" type="submit" name="addAdvice" value="Aanmaken" style="width: 100%;">
                                     				</li>
                                 				</form>
+                                				<?php
+                                					if(isset($_POST['addAdvice']))
+                                					{
+
+                                					}
+                                				?>
                                 				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
                                             </div>
 										</div>
 									</div>
 								</li>
 								<?php 
-      }
-    } else {
-      echo "geen documenten";
-    } ?>
+      								}
+   	 							} else {
+      								echo "geen documenten";
+    							} 
+    							?>
 							</ul>
 						</div>
 					</div>
