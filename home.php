@@ -517,7 +517,7 @@ include 'function_getAdviceTips.php';
                                 					}
                                 					if(isset($_POST['Inleveren']))
                                 					{
-                                						uploadProjectDocument($_POST['ID'], $projectID);
+                                						uploadProjectDocument($projectID, $_POST['ID']);
                                 					}
                                 				?>
 				<?php 
