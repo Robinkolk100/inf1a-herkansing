@@ -230,19 +230,33 @@ include 'function_getAdviceTips.php';
 						<div class="col s12 m6 l3">
 							<div class="card">
 								<div class="card-content deep-orange accent-2 white-text">
-									<p class="card-stats-title">
-										<i class="material-icons">content_copy</i> New Invoice
+									<p class="card-stats-title center">
+										<i class="material-icons">content_copy</i> Eerst volgende document
 									</p>
-									<h4 class="card-stats-number">1806</h4>
-									<p class="card-stats-compare">
-										<i class="material-icons">keyboard_arrow_down</i> 3%
-										<span class="deep-orange-text text-lighten-5">from last month</span>
-									</p>
-								</div>
-								<div class="card-action  deep-orange darken-1">
-									<div id="invoice-line" class="center-align">
-										<canvas style="display: inline-block; width: 264.767px; height: 25px; vertical-align: top;" width="264" height="25"></canvas>
-									</div>
+									<?php 
+									$dagvanvandaag = date("Y-m-d");
+									$maareendag = 0;
+
+									$query = "SELECT `documents`.`documentID`, `documentDeadline`, documents.documentName
+									FROM `projectdocuments` 
+									JOIN `documents` ON `projectdocuments`.`documentID` = `documents`.`documentID` 
+									WHERE `projectID` = ". $_GET['project'] ."
+									ORDER BY documentDeadline ASC; ";
+							
+									$conn = dbConnect();
+									//  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
+									$result = @mysqli_query($conn, $query) or die(mysqli_error());
+									while ($row = mysqli_fetch_array($result)) {
+										if($dagvanvandaag <= $row['documentDeadline'] ){
+											if($maareendag == 0){
+									  echo "<h4 class='card-stats-number center'>" . $row['documentDeadline'] . "</h4>";
+									  echo "<p class='center'>" . $row['documentName'] . "  </p>";
+									  $maareendag = 1;
+											}
+										}
+									}
+									
+									?>
 								</div>
 							</div>
 						</div>
