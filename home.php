@@ -169,7 +169,7 @@ include 'function_getAdviceTips.php';
 							<div class="card">
 								<div class="card-content cyan white-text">
 									<p class="card-stats-title center">
-										<i class="material-icons center">person_outline</i> Aantal projectleden 
+										 Aantal projectleden 
 									</p>
 									<?php
         $query = "SELECT COUNT(`users`.`userID`) AS aantalUsers
@@ -233,7 +233,7 @@ include 'function_getAdviceTips.php';
 							<div class="card">
 								<div class="card-content deep-orange accent-2 white-text">
 									<p class="card-stats-title center">
-										<i class="material-icons">content_copy</i> Eerst volgende document
+										 Eerst volgende document
 									</p>
 									<?php 
 									$dagvanvandaag = date("Y-m-d");
@@ -290,7 +290,7 @@ include 'function_getAdviceTips.php';
           echo "<input type='hidden' value=" . $projectID . " name='projectId' />";
           ?>        
 										</select>
-										<p>nieuw lid toevoegen <input type='submit' value='lid toevoegen'></p>
+										<p><input type='submit' class="waves-effect waves-light cyan darken-2 btn" value='lid toevoegen'></p>
 									</form>
 									<?php 
         if (isset($_POST['addmember'])) {
@@ -349,12 +349,11 @@ include 'function_getAdviceTips.php';
           ?>        
 										</select>
 										<input type="date" name="Deadline">
-										<p> <input type='submit' name="addProjDoc" value='toevoegen'></p>
+										<p> <input type='submit' name="addProjDoc" class="waves-effect waves-light red btn" value='toevoegen'></p>
 									</form>
 								</li>
 								<?php
         if (isset($_POST['addProjDoc'])) {
-          echo $_POST['addDocument'];
           addProjectDocument($projectID, $_POST['addDocument'], $_POST['Deadline']);
         }
 
@@ -521,9 +520,7 @@ include 'function_getAdviceTips.php';
                                 					}
                                 				?>
 				<?php 
-  } else {
-    echo "geen project geselect";
-  }
+  } 
   ?>
 				<!--card widgets start-->
 				<div id="card-widgets">
