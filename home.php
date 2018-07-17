@@ -12,6 +12,8 @@ include 'function_addProject.php';
 include 'function_addProjectMember.php';
 include 'function_addProjectDocument.php';
 include 'function_warningProjectMember.php';
+include 'function_uploadProjectDocument.php';
+include 'function_updateDeadlineProjectDocument.php';
 	//include 'function_getProjects.php';
 include 'function_getProjectMembers.php';
 include 'function_getUsers.php';
@@ -358,11 +360,11 @@ include 'function_getAdviceTips.php';
 											</div>
 											<div class="col s4">
 												<strong>Deadline: </strong>
-												<input type="date" name="Deadline" value=<?php echo $document['documentDeadline']; ?>>
+												<input type="date" name="NewDeadline" value=<?php echo $document['documentDeadline']; ?>>
 											</div>
 											<div class="col s3">
-												<input type="submit" class="waves-effect waves-light red btn" value="Aanpassen">
-												<input type="submit" class="waves-effect waves-light red btn" value="Inleveren ">
+												<input type="submit" name="NewDeadline" class="waves-effect waves-light red btn" value="Aanpassen">
+												<input type="submit" name="Inleveren" class="waves-effect waves-light red btn" value=" Inleveren ">
 											</div>
 										</form>
 										<div id="modal<?php echo $document['documentID']; ?>" class="modal">
@@ -453,7 +455,7 @@ include 'function_getAdviceTips.php';
                                                 <form action="#" method="post">
                                     				<li style="touch-action: pan-y;">
                                     					<strong>Advies Type</strong>
-                                        				<select name="addDocument" style="display: block;">
+                                        				<select name="AdviceType" style="display: block;">
                                         					<option value="Verplichting">Verplichting</option>
                                         					<option value="Valkuil">Valkuil</option>
                                         					<option value="Tip">Tip</option>
@@ -470,7 +472,7 @@ include 'function_getAdviceTips.php';
                                 				<?php
                                 					if(isset($_POST['addAdvice']))
                                 					{
-
+                                						addAdvice($document['documentID'], $_POST['AdviceType'], $_POST['AdviceTekst']);
                                 					}
                                 				?>
                                 				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
@@ -493,6 +495,13 @@ include 'function_getAdviceTips.php';
   } else {
     echo "geen project geselect";
   }
+
+												if (isset($_POST['NewDeadline'])) { 
+													updateProjectDocument($projectID, $document['documentID'], $_POST['NewDeadline']);
+												}
+												if (isset($_POST['Inleveren'])) {
+													uploadProjectDocument($projectID, $document['documentID']) ;
+												}
   ?>
 				<!--card widgets start-->
 				<div id="card-widgets">
