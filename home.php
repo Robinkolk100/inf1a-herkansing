@@ -157,7 +157,6 @@ include 'function_getAdviceTips.php';
 			<!--START CONTENT-->     
 			<?php 
   if (isset($_GET['project'])) {
-    echo "laat project gegevens zien";
     $projectID = $_GET['project'];
     ?>  
 			<div class="container">
@@ -168,7 +167,7 @@ include 'function_getAdviceTips.php';
 							<div class="card">
 								<div class="card-content cyan white-text">
 									<p class="card-stats-title center">
-										<i class="material-icons center">person_outline</i> Aantal project leden 
+										<i class="material-icons center">person_outline</i> Aantal projectleden 
 									</p>
 									<?php
         $query = "SELECT COUNT(`users`.`userID`) AS aantalUsers
@@ -189,7 +188,7 @@ include 'function_getAdviceTips.php';
 							<div class="card">
 								<div class="card-content red accent-2 white-text">
 									<p class="card-stats-title center">
-										<i class="material-icons center">attach_money</i>Totaal aantal waarschuwingen
+										<i class="material-icons center"></i>Totaal aantal waarschuwingen
 									</p>
 									<?php
         $query = "SELECT SUM(`userproject`.`WarningCount`)   AS WarningCount
@@ -210,7 +209,7 @@ include 'function_getAdviceTips.php';
 							<div class="card">
 								<div class="card-content teal accent-4 white-text">
 									<p class="card-stats-title center">
-										<i class="material-icons center">trending_up</i> Aantal documenten
+										<i class="material-icons center"></i> Aantal documenten
 									</p>
 									<?php
         $query = "SELECT COUNT(`documents`.`documentID`)   AS aantaldoc
@@ -257,7 +256,7 @@ include 'function_getAdviceTips.php';
 							<ul id="projects-collection" class="collection z-depth-1">
 								<li class="collection-item cyan avatar">
 									<i class="material-icons cyan circle">person_outline</i>
-									<h6 class="collection-header m-0">Project leden</h6>
+									<h6 class="collection-header m-0">Projectleden</h6>
 									<?php
         $query = "SELECT * FROM `users`ORDER BY `users`.`UserID` ASC ";
         $conn = dbConnect();
@@ -275,7 +274,7 @@ include 'function_getAdviceTips.php';
           echo "<input type='hidden' value=" . $projectID . " name='projectId' />";
           ?>        
 										</select>
-										<p>nieuw lid toevoegen <input type='submit' value='add lid'></p>
+										<p>nieuw lid toevoegen <input type='submit' value='lid toevoegen'></p>
 									</form>
 									<?php 
         if (isset($_POST['addmember'])) {
@@ -299,7 +298,7 @@ include 'function_getAdviceTips.php';
           echo '<div class="col s3">';
           echo "<form action=\"#\" method=\"post\">";
           echo "<input type=\"hidden\" name=\"ID\" value='" . $Members["userID"] . "'>";
-          echo "<input type=\"submit\" class=\"waves-effect waves-light red btn\" name=\"AddWarning\" value=\"Add\">";
+          echo "<input type=\"submit\" class=\"waves-effect waves-light red btn\" name=\"AddWarning\" value=\"toevoegen\">";
           echo "</form>";
           echo '</div>';
           echo '</div>';
@@ -316,7 +315,7 @@ include 'function_getAdviceTips.php';
 							<ul id="issues-collection " class="collection z-depth-1">
 								<li class="collection-item red accent-2 avatar">
 									<i class="material-icons red accent-2 circle">library_books</i>
-									<h6 class="collection-header m-0">documents</h6>
+									<h6 class="collection-header m-0">documenten</h6>
 									<?php
         $query = "SELECT * FROM `documents`ORDER BY `documents`.`documentID` ASC ";
         $conn = dbConnect();
@@ -507,16 +506,16 @@ include 'function_getAdviceTips.php';
 								</li>
 								<form action="#" method="post">
 									<li style="touch-action: pan-y;">
-										<input type="text" name="projectGroup" placeholder="projectGroup">
+										<input type="text" name="projectGroup" placeholder="projectgroep(bijv. A)">
 									</li>
 									<li style="touch-action: pan-y;">
-										<input type="text" name="projectPeriod" placeholder="projectPeriod">
+										<input type="text" name="projectPeriod" placeholder="projectperiode">
 									</li>
 									<li style="touch-action: pan-y;">
-										<input type="text" name="projectYear" placeholder="projectYear">
+										<input type="text" name="projectYear" placeholder="projectjaar">
 									</li>
 									<li style="touch-action: pan-y;">
-										<input type="text" name="projectName" placeholder="projectName">
+										<input type="text" name="projectName" placeholder="projectnaam">
 									</li>
 									<li style="touch-action: pan-y;">
 										<input class="waves-effect waves-light btn" type="submit" name="NewProject" value="Aanmaken" style="width: 100%;"><br>
@@ -544,7 +543,7 @@ include 'function_getAdviceTips.php';
 								</li>
 								<form action="#" method="post">
 									<li style="touch-action: pan-y;">
-										<input type="text" name="documentName" placeholder="Document naam">
+										<input type="text" name="documentName" placeholder="Documentnaam">
 									</li>
 									<li style="touch-action: pan-y;">
 										<input class="waves-effect waves-red red btn" type="submit" name="NewDocument" value="Aanmaken" style="width: 100%;"><br>
@@ -627,13 +626,7 @@ include 'function_getAdviceTips.php';
 			<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 			<script src="js/materialize.js"></script>
 			<script src="js/init.js"></script>
-			<!-- < if(isset($_GET['logout'] )){
-				Logout();
-				header('Location: index.php');
-				
-				}else{}
-				Print_r($_GET['logout']);
-				?> -->
+			
 		</div>
 	</body>
 </html>
