@@ -367,7 +367,6 @@ include 'function_getAdviceTips.php';
 												<input type="submit" class="waves-effect waves-light red btn" value="Aanpassen">
 												<input type="submit" name="inleveren" class="waves-effect waves-light red btn" value=" Inleveren ">
 											</div>
-										</form>
 										<div id="modal<?php echo $document['documentID']; ?>" class="modal">
 											<div class="modal-content">
 												<div id="work-collections">
@@ -453,7 +452,6 @@ include 'function_getAdviceTips.php';
           										</div>
 											</div>
 											<div class="modal-footer">
-                                                <form action="#" method="post">
                                     				<li style="touch-action: pan-y;">
                                     					<strong>Advies Type</strong>
                                         				<select name="AdviceType" style="display: block;">
@@ -470,12 +468,6 @@ include 'function_getAdviceTips.php';
                                         				<input class="waves-effect waves-red red btn" type="submit" name="addAdvice" value="Aanmaken" style="width: 100%;">
                                     				</li>
                                 				</form>
-                                				<?php
-                                					if(isset($_POST['addAdvice']))
-                                					{
-                                						addAdvice($document['documentID'], $_POST['AdviceType'], $_POST['AdviceTekst']);
-                                					}
-                                				?>
                                 				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
                                             </div>
 										</div>
@@ -492,6 +484,12 @@ include 'function_getAdviceTips.php';
 					</div>
 				</div>
 				<!--work collections end-->
+				<?php
+                                					if(isset($_POST['addAdvice']))
+                                					{
+                                						addAdvice($_POST['ID'], $_POST['AdviceType'], $_POST['AdviceTekst']);
+                                					}
+                                				?>
 				<?php 
   } else {
     echo "geen project geselect";
