@@ -1,6 +1,6 @@
 <?php
 
-    function getAdvice($documentID)
+    function getAdviceTips($documentID)
     {
         $count = 0;
         $errorCount = 0;
@@ -19,7 +19,8 @@
             $conn = dbConnect();
             $result = $conn->query("SELECT `adviceType`, `adviceTekst` 
                                     FROM `advice` 
-                                    WHERE `documentID`='".$documentID."';");
+                                    WHERE `documentID`='".$documentID."'
+                                    AND `adviceType`='Tip' ;");
             // Check if there are results
             if($result->num_rows > 0)
             {

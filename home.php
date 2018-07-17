@@ -20,7 +20,9 @@ include 'function_getProjectsYearTree.php';
 include 'function_getProjectsYearFour.php';
 include 'function_getProjectDocuments.php';
 include 'function_getDocuments.php';
-include 'function_getAdvice.php';
+include 'function_getAdviceObligation.php';
+include 'function_getAdvicePitfall.php';
+include 'function_getAdviceTips.php';
 	//print_r($_SESSION)
 ?>
 <!DOCTYPE html>
@@ -368,21 +370,80 @@ include 'function_getAdvice.php';
 													<div class="col s12 m12 16">
 														<ul id="projects-collection" class="collection z-depth-1">
 															 <li class="collection-item cyan avatar">
-                                     							 <i class="materialize-icons red circle">person_outline</i>
                                      							 <h5 class="collection-header m-0">Verplichtingen</h5>
                                    							 </li>
                                    							 <li class="collection-item ">
-												<?php 
-            $Advices = getAdvice($document['documentID']);
-            if ($Advices != null) {
-              foreach ($Advices as $Advice) {
-                ?>
+															<?php 
+            													$Obligations = getAdviceObligation($document['documentID']);
+            													if ($Obligations != null) 
+            													{
+              														foreach ($Obligations as $Obligation) 
+              														{
+                											?>
 															<li class="collection-item ">
-																<p><?php echo $Advice['adviceTekst']; ?></p>
+																<p><?php echo $Obligation['adviceTekst']; ?></p>
           													</li>
-												<?php 
+															<?php 
+          															}
+          														} 
+          														else
+          														{
+          															echo "Er zijn geen verplichtingen aangegeven.";
+          														}
 
-          }; ?>											
+          													?>											
+      													</ul>
+          											</div>
+          										</div>
+          										<div id="work-collections">
+													<div class="col s12 m12 16">
+														<ul id="projects-collection" class="collection z-depth-1">
+															 <li class="collection-item cyan avatar">
+                                     							 <h5 class="collection-header m-0">Valkuilen</h5>
+                                   							 </li>
+                                   							 <li class="collection-item ">
+																<?php 
+            														$Pitfalls = getAdvicePitfall($document['documentID']);
+            														if ($Pitfalls != null) {
+              															foreach ($Pitfalls as $Pitfall) {
+                												?>
+																<li class="collection-item ">
+																	<p><?php echo $Pitfall['adviceTekst']; ?></p>
+	          													</li>
+																<?php 
+																		}
+																	}
+																	else
+																	{
+																		echo "Er zijn geen valkuilen aangegeven.";
+																	}
+																 ?>											
+      													</ul>
+          											</div>
+          										</div>
+          										<div id="work-collections">
+													<div class="col s12 m12 16">
+														<ul id="projects-collection" class="collection z-depth-1">
+															 <li class="collection-item cyan avatar">
+                                     							 <h5 class="collection-header m-0">Tips</h5>
+                                   							 </li>
+                                   							 <li class="collection-item ">
+															<?php 
+            													$Tips = getAdviceTips($document['documentID']);
+            													if ($Tips != null) {
+              														foreach ($Tips as $Tip) {
+                											?>
+															<li class="collection-item ">
+																<p><?php echo $Tip['adviceTekst']; ?></p>
+          													</li>
+																<?php 
+          															} 
+          														}
+          														else
+          														{
+																	echo "Er zijn nog geen tips gegeven.";
+          														}
+          														?>											
       													</ul>
           											</div>
           										</div>
@@ -402,18 +463,12 @@ include 'function_getAdvice.php';
                                         				<textarea name="AdviceTekst" placeholder="Voor hier uw advies in." class="materialize-textarea" rows="4"></textarea>
                                     				</li>
                                     				<li style="touch-action: pan-y;">
-                                        				<input class="waves-effect waves-red red btn" type="submit" name="NewDocument" value="Aanmaken" style="width: 100%;">
+                                        				<input class="waves-effect waves-red red btn" type="submit" name="addAdvice" value="Aanmaken" style="width: 100%;">
                                     				</li>
                                 				</form>
                                 				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
                                             </div>
 										</div>
-										<?php
-
-        } else {
-          echo "geen advies gegeven";
-        }
-        ?>
 									</div>
 								</li>
 								<?php 
