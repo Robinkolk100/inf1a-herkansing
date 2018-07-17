@@ -6,7 +6,7 @@
 
 
         $conn = dbConnect(); 
-        $result = $conn->query("SELECT `documents`.`documentID`, `documentDeadline`, `documentName`
+        $result = $conn->query("SELECT `documents`.`documentID`, `documentDeadline`, `documentName`, `documentUpload`
                                 FROM `projectdocuments` 
                                 JOIN `documents` ON `projectdocuments`.`documentID` = `documents`.`documentID` 
                                 WHERE `projectID` = '".$projectID."';");
