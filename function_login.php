@@ -5,6 +5,7 @@ function Inlog($student_ID, $student_wachtwoord)
     $count = 0;
     $conn = dbConnect();
     $message = array();
+    $_SESSION["login"]= 0;
 
     // To protect MySQLi injection (more detail about MySQL injection)
     $student_ID = mysqli_real_escape_string($conn, $student_ID);
