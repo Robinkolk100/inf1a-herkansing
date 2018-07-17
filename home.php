@@ -208,19 +208,22 @@ include 'function_getAdviceTips.php';
 						<div class="col s12 m6 l3">
 							<div class="card">
 								<div class="card-content teal accent-4 white-text">
-									<p class="card-stats-title">
-										<i class="material-icons">trending_up</i> Today Profit
+									<p class="card-stats-title center">
+										<i class="material-icons center">trending_up</i> Aantal documenten
 									</p>
-									<h4 class="card-stats-number">$806.52</h4>
-									<p class="card-stats-compare">
-										<i class="material-icons">keyboard_arrow_up</i> 80%
-										<span class="teal-text text-lighten-5">from yesterday</span>
-									</p>
-								</div>
-								<div class="card-action teal darken-1">
-									<div id="profit-tristate" class="center-align">
-										<canvas style="display: inline-block; width: 227px; height: 25px; vertical-align: top;" width="227" height="25"></canvas>
-									</div>
+									<?php
+        $query = "SELECT COUNT(`documents`.`documentID`)   AS aantaldoc
+		FROM `projectdocuments` 
+		JOIN `documents` ON `projectdocuments`.`documentID` = `documents`.`documentID` 
+		WHERE `projectID` = " . $_GET['project'] . " ";
+
+        $conn = dbConnect();
+										//  Voer de query uit en en sla op in recordset (@ betekent: onderdruk errormessages)
+        $result = @mysqli_query($conn, $query) or die(mysqli_error());
+        while ($row = mysqli_fetch_array($result)) {
+          echo "<h4 class='card-stats-number center'>" . $row['aantaldoc'] . "</h4>";
+        }
+        ?> 
 								</div>
 							</div>
 						</div>
