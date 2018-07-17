@@ -76,7 +76,7 @@ include 'function_getAdviceTips.php';
 
       }
     } else {
-      echo "geen project voor dit jaar";
+      echo "nog geen projecten voor dit jaar";
     }
     ?>
 								</ul>
@@ -99,7 +99,7 @@ include 'function_getAdviceTips.php';
 
       }
     } else {
-      echo "geen project voor dit jaar";
+      echo "nog geen projecten voor dit jaar";
     }
     ?>
 								</ul>
@@ -122,7 +122,7 @@ include 'function_getAdviceTips.php';
 
       }
     } else {
-      echo "geen project voor dit jaar";
+      echo "nog geen projecten voor dit jaar";
     }
     ?>
 								</ul>
@@ -145,7 +145,7 @@ include 'function_getAdviceTips.php';
 
       }
     } else {
-      echo "geen project voor dit jaar";
+      echo "nog geen projecten voor dit jaar";
     }
     ?>
 								</ul>
@@ -522,7 +522,7 @@ include 'function_getAdviceTips.php';
                                 				?>
 				<?php 
   } else {
-    echo "geen project geselect";
+    echo "geen project geselecteerd";
   }
   ?>
 				<!--card widgets start-->
