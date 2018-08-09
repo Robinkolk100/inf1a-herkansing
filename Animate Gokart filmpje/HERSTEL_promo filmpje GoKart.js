@@ -4636,6 +4636,7 @@ p.nominalBounds = new cjs.Rectangle(-149.9,-195.1,299.9,390.3);
 	this.instance_3 = new lib.home_Button();
 	this.instance_3.parent = this;
 	this.instance_3.setTransform(1700,92.3);
+	new cjs.ButtonHelper(this.instance_3, 0, 1, 1);
 
 	this.instance_4 = new lib.knop();
 	this.instance_4.parent = this;
@@ -9825,23 +9826,23 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/HERSTEL_promo filmpje GoKart_atlas_.png?1533819539058", id:"HERSTEL_promo filmpje GoKart_atlas_"},
-		{src:"sounds/Audio110wav.mp3?1533819539980", id:"Audio110wav"},
-		{src:"sounds/Audio111wav.mp3?1533819539980", id:"Audio111wav"},
-		{src:"sounds/Audio112wav.mp3?1533819539980", id:"Audio112wav"},
-		{src:"sounds/Audio113wav.mp3?1533819539980", id:"Audio113wav"},
-		{src:"sounds/Audio114wav.mp3?1533819539980", id:"Audio114wav"},
-		{src:"sounds/Audio115wav.mp3?1533819539980", id:"Audio115wav"},
-		{src:"sounds/Audio12wav.mp3?1533819539980", id:"Audio12wav"},
-		{src:"sounds/Audio13wav.mp3?1533819539980", id:"Audio13wav"},
-		{src:"sounds/Audio14wav.mp3?1533819539980", id:"Audio14wav"},
-		{src:"sounds/Audio15wav.mp3?1533819539980", id:"Audio15wav"},
-		{src:"sounds/Audio16wav.mp3?1533819539980", id:"Audio16wav"},
-		{src:"sounds/Audio17wav.mp3?1533819539980", id:"Audio17wav"},
-		{src:"sounds/Audio18wav.mp3?1533819539980", id:"Audio18wav"},
-		{src:"sounds/Audio19wav.mp3?1533819539980", id:"Audio19wav"},
-		{src:"sounds/Audio1wav.mp3?1533819539980", id:"Audio1wav"},
-		{src:"sounds/introMuziek.mp3?1533819539980", id:"introMuziek"}
+		{src:"images/HERSTEL_promo filmpje GoKart_atlas_.png?1533821531772", id:"HERSTEL_promo filmpje GoKart_atlas_"},
+		{src:"sounds/Audio110wav.mp3?1533821532686", id:"Audio110wav"},
+		{src:"sounds/Audio111wav.mp3?1533821532686", id:"Audio111wav"},
+		{src:"sounds/Audio112wav.mp3?1533821532686", id:"Audio112wav"},
+		{src:"sounds/Audio113wav.mp3?1533821532686", id:"Audio113wav"},
+		{src:"sounds/Audio114wav.mp3?1533821532686", id:"Audio114wav"},
+		{src:"sounds/Audio115wav.mp3?1533821532686", id:"Audio115wav"},
+		{src:"sounds/Audio12wav.mp3?1533821532686", id:"Audio12wav"},
+		{src:"sounds/Audio13wav.mp3?1533821532686", id:"Audio13wav"},
+		{src:"sounds/Audio14wav.mp3?1533821532686", id:"Audio14wav"},
+		{src:"sounds/Audio15wav.mp3?1533821532686", id:"Audio15wav"},
+		{src:"sounds/Audio16wav.mp3?1533821532686", id:"Audio16wav"},
+		{src:"sounds/Audio17wav.mp3?1533821532686", id:"Audio17wav"},
+		{src:"sounds/Audio18wav.mp3?1533821532686", id:"Audio18wav"},
+		{src:"sounds/Audio19wav.mp3?1533821532686", id:"Audio19wav"},
+		{src:"sounds/Audio1wav.mp3?1533821532686", id:"Audio1wav"},
+		{src:"sounds/introMuziek.mp3?1533821532686", id:"introMuziek"}
 	],
 	preloads: []
 };
